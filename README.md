@@ -21,7 +21,7 @@ Designed specifically as a **ready-to-sell digital product** for freelancers, de
 ## 📁 Project Architecture
 
 ```
-portfolio-templates/
+developer-portfolio-template/
 ├── src/
 │   ├── app/
 │   │   ├── layout.tsx         # Root layout with dynamic SEO metadata from data.json

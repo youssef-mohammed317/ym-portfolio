@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { usePortfolio } from "@/context/PortfolioContext";
-import { PortfolioData } from "@/types/portfolio";
+import { PortfolioData, ProjectItem, SkillItem } from "@/types/portfolio";
 import {
   SlidersHorizontal,
   X,
@@ -20,9 +20,11 @@ import {
   ExternalLink,
   Plus,
   Trash2,
+  FileUp,
+  GraduationCap,
 } from "lucide-react";
 
-type ActiveTab = "personal" | "stats" | "skills" | "projects" | "contact" | "json";
+type ActiveTab = "personal" | "stats" | "skills" | "projects" | "experience" | "contact" | "json";
 
 export function LiveEditorDrawer() {
   const { data, updateData, resetData, exportDataJson, isModified } = usePortfolio();
@@ -31,6 +33,24 @@ export function LiveEditorDrawer() {
   const [jsonText, setJsonText] = useState("");
   const [jsonError, setJsonError] = useState<string | null>(null);
   const [appliedJson, setAppliedJson] = useState(false);
+  const [uploadedCvName, setUploadedCvName] = useState<string | null>(null);
+
+  // Close on Escape key and prevent background scroll when open
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
 
   if (!data.siteMetadata.enableLiveEditor) {
     return null;
@@ -50,6 +70,15 @@ export function LiveEditorDrawer() {
         [field]: val,
       },
     }));
+  };
+
+  const handleCvUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const blobUrl = URL.createObjectURL(file);
+      handlePersonalChange("resumeUrl", blobUrl);
+      setUploadedCvName(file.name);
+    }
   };
 
   const handleContactChange = (field: string, val: string) => {
@@ -82,6 +111,7 @@ export function LiveEditorDrawer() {
     });
   };
 
+  // SKILLS CRUD
   const handleSkillLevelChange = (catIdx: number, skillIdx: number, level: number) => {
     updateData((prev) => {
       const nextSkills = [...prev.skills];
@@ -95,18 +125,146 @@ export function LiveEditorDrawer() {
     });
   };
 
+  const handleSkillNameChange = (catIdx: number, skillIdx: number, name: string) => {
+    updateData((prev) => {
+      const nextSkills = [...prev.skills];
+      if (nextSkills[catIdx]?.items[skillIdx]) {
+        nextSkills[catIdx].items[skillIdx] = {
+          ...nextSkills[catIdx].items[skillIdx],
+          name,
+        };
+      }
+      return { ...prev, skills: nextSkills };
+    });
+  };
+
+  const handleAddSkill = (catIdx: number) => {
+    updateData((prev) => {
+      const nextSkills = [...prev.skills];
+      if (nextSkills[catIdx]) {
+        nextSkills[catIdx] = {
+          ...nextSkills[catIdx],
+          items: [
+            ...nextSkills[catIdx].items,
+            { name: "New Skill", level: 85, badge: "Proficient", icon: "code" },
+          ],
+        };
+      }
+      return { ...prev, skills: nextSkills };
+    });
+  };
+
+  const handleDeleteSkill = (catIdx: number, skillIdx: number) => {
+    updateData((prev) => {
+      const nextSkills = [...prev.skills];
+      if (nextSkills[catIdx]) {
+        nextSkills[catIdx] = {
+          ...nextSkills[catIdx],
+          items: nextSkills[catIdx].items.filter((_, i) => i !== skillIdx),
+        };
+      }
+      return { ...prev, skills: nextSkills };
+    });
+  };
+
+  const handleAddCategory = () => {
+    updateData((prev) => ({
+      ...prev,
+      skills: [
+        ...prev.skills,
+        {
+          category: "Specialized Discipline",
+          description: "New skill set and practical knowledge",
+          items: [{ name: "Core Technology", level: 90, badge: "Expert", icon: "code" }],
+        },
+      ],
+    }));
+  };
+
+  const handleDeleteCategory = (catIdx: number) => {
+    updateData((prev) => ({
+      ...prev,
+      skills: prev.skills.filter((_, i) => i !== catIdx),
+    }));
+  };
+
+  // PROJECTS CRUD
   const handleProjectChange = (
     index: number,
-    field: "title" | "category" | "description" | "metric",
+    field: "title" | "category" | "description" | "metric" | "tagsString",
     val: string
   ) => {
     updateData((prev) => {
       const nextProjects = [...prev.projects];
       if (nextProjects[index]) {
-        nextProjects[index] = { ...nextProjects[index], [field]: val };
+        if (field === "tagsString") {
+          const tags = val.split(",").map((t) => t.trim()).filter(Boolean);
+          nextProjects[index] = { ...nextProjects[index], tags };
+        } else {
+          nextProjects[index] = { ...nextProjects[index], [field]: val };
+        }
       }
       return { ...prev, projects: nextProjects };
     });
+  };
+
+  const handleAddProject = () => {
+    updateData((prev) => ({
+      ...prev,
+      projects: [
+        {
+          id: `project-${Date.now()}`,
+          title: "New Featured Project",
+          tagline: "High-impact digital product summary",
+          category: prev.projectCategories[1] || "Full-Stack",
+          description: "Detailed description of what this project achieves and key metrics delivered.",
+          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+          tags: ["Next.js", "React", "Tailwind CSS"],
+          demoUrl: "https://example.com",
+          githubUrl: "https://github.com",
+          featured: true,
+          metric: "10,000+ Users",
+          keyFeatures: ["High performance architecture", "Sub-second response times"],
+        },
+        ...prev.projects,
+      ],
+    }));
+  };
+
+  const handleDeleteProject = (projId: string) => {
+    updateData((prev) => ({
+      ...prev,
+      projects: prev.projects.filter((p) => p.id !== projId),
+    }));
+  };
+
+  // EXPERIENCE CRUD
+  const handleAddExperience = () => {
+    updateData((prev) => ({
+      ...prev,
+      experience: [
+        {
+          id: `exp-${Date.now()}`,
+          role: "Senior Engineer / Consultant",
+          company: "Enterprise Solutions Co.",
+          companyUrl: "https://example.com",
+          period: "2024 - Present",
+          location: "Remote",
+          type: "Full-time",
+          description: "Directing frontend technical initiatives, performance optimization, and architectural decisions.",
+          achievements: ["Improved core vitals by 40%", "Mentored engineering team"],
+          technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+        },
+        ...prev.experience,
+      ],
+    }));
+  };
+
+  const handleDeleteExperience = (expId: string) => {
+    updateData((prev) => ({
+      ...prev,
+      experience: prev.experience.filter((e) => e.id !== expId),
+    }));
   };
 
   const handleApplyJson = () => {
@@ -140,11 +298,19 @@ export function LiveEditorDrawer() {
         </button>
       </div>
 
-      {/* Slide-Over Drawer */}
+      {/* Slide-Over Drawer with Clickable Backdrop */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 overflow-hidden bg-slate-950/60 backdrop-blur-sm">
-          <div className="absolute inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
-            <div className="w-screen max-w-xl bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between">
+        <div className="fixed inset-0 z-50 overflow-hidden">
+          {/* Backdrop: Clicking outside closes drawer */}
+          <div
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 bg-slate-950/65 backdrop-blur-sm transition-opacity cursor-pointer animate-fadeIn"
+            aria-label="Close backdrop"
+          />
+
+          <div className="absolute inset-y-0 right-0 max-w-full flex pointer-events-none">
+            {/* Wider container: max-w-2xl sm:max-w-3xl lg:max-w-4xl eliminates horizontal scroll and provides ample editing space */}
+            <div className="w-screen max-w-2xl sm:max-w-3xl lg:max-w-4xl bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between pointer-events-auto">
               {/* Header */}
               <div className="p-4 sm:p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
@@ -152,42 +318,43 @@ export function LiveEditorDrawer() {
                     <SlidersHorizontal className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900 dark:text-white text-sm">
+                    <h3 className="font-bold text-slate-900 dark:text-white text-sm sm:text-base">
                       Complete Live Portfolio Editor
                     </h3>
                     <p className="text-[11px] text-slate-500">
-                      Test all sections live or edit full data.json directly
+                      Add, edit, or delete anything live — 100% data.json binding
                     </p>
                   </div>
                 </div>
 
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
+                  className="p-2 rounded-xl text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  title="Close (Esc)"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Sub-Navigation Tabs */}
-              <div className="flex items-center gap-1 px-4 py-2 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 overflow-x-auto text-xs font-semibold">
+              {/* Sub-Navigation Tabs without any horizontal scrollbar */}
+              <div className="flex items-center gap-1.5 px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 overflow-x-auto text-xs font-semibold [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                 <button
                   onClick={() => setActiveTab("personal")}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
                     activeTab === "personal"
-                      ? "bg-indigo-600 text-white"
+                      ? "bg-indigo-600 text-white shadow-sm"
                       : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800"
                   }`}
                 >
                   <User className="w-3.5 h-3.5" />
-                  <span>Profile</span>
+                  <span>Profile & Bio</span>
                 </button>
 
                 <button
                   onClick={() => setActiveTab("stats")}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
                     activeTab === "stats"
-                      ? "bg-indigo-600 text-white"
+                      ? "bg-indigo-600 text-white shadow-sm"
                       : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800"
                   }`}
                 >
@@ -199,19 +366,19 @@ export function LiveEditorDrawer() {
                   onClick={() => setActiveTab("skills")}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
                     activeTab === "skills"
-                      ? "bg-indigo-600 text-white"
+                      ? "bg-indigo-600 text-white shadow-sm"
                       : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800"
                   }`}
                 >
                   <Cpu className="w-3.5 h-3.5" />
-                  <span>Skills</span>
+                  <span>Skills & Tech</span>
                 </button>
 
                 <button
                   onClick={() => setActiveTab("projects")}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
                     activeTab === "projects"
-                      ? "bg-indigo-600 text-white"
+                      ? "bg-indigo-600 text-white shadow-sm"
                       : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800"
                   }`}
                 >
@@ -220,10 +387,22 @@ export function LiveEditorDrawer() {
                 </button>
 
                 <button
+                  onClick={() => setActiveTab("experience")}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
+                    activeTab === "experience"
+                      ? "bg-indigo-600 text-white shadow-sm"
+                      : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800"
+                  }`}
+                >
+                  <GraduationCap className="w-3.5 h-3.5" />
+                  <span>Experience</span>
+                </button>
+
+                <button
                   onClick={() => setActiveTab("contact")}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
                     activeTab === "contact"
-                      ? "bg-indigo-600 text-white"
+                      ? "bg-indigo-600 text-white shadow-sm"
                       : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800"
                   }`}
                 >
@@ -238,7 +417,7 @@ export function LiveEditorDrawer() {
                   }}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
                     activeTab === "json"
-                      ? "bg-indigo-600 text-white"
+                      ? "bg-indigo-600 text-white shadow-sm"
                       : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800"
                   }`}
                 >
@@ -259,28 +438,30 @@ export function LiveEditorDrawer() {
                       </p>
                     </div>
 
-                    <div>
-                      <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        value={data.personal.name}
-                        onChange={(e) => handlePersonalChange("name", e.target.value)}
-                        className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
-                      />
-                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                          Full Name
+                        </label>
+                        <input
+                          type="text"
+                          value={data.personal.name}
+                          onChange={(e) => handlePersonalChange("name", e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
+                        />
+                      </div>
 
-                    <div>
-                      <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                        Professional Headline
-                      </label>
-                      <input
-                        type="text"
-                        value={data.personal.headline}
-                        onChange={(e) => handlePersonalChange("headline", e.target.value)}
-                        className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
-                      />
+                      <div>
+                        <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                          Professional Headline
+                        </label>
+                        <input
+                          type="text"
+                          value={data.personal.headline}
+                          onChange={(e) => handlePersonalChange("headline", e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
+                        />
+                      </div>
                     </div>
 
                     <div>
@@ -295,7 +476,7 @@ export function LiveEditorDrawer() {
                       />
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
                           Location
@@ -337,6 +518,31 @@ export function LiveEditorDrawer() {
                         className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-[11px]"
                       />
                     </div>
+
+                    {/* CV PDF Upload Option */}
+                    <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <label className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                          <FileUp className="w-4 h-4 text-indigo-500" />
+                          <span>Custom CV / Resume (PDF)</span>
+                        </label>
+                        {uploadedCvName && (
+                          <span className="text-[11px] text-emerald-500 font-semibold flex items-center gap-1">
+                            <Check className="w-3.5 h-3.5" />
+                            {uploadedCvName}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-[11px] text-slate-500">
+                        Choose your personal PDF file to bind it immediately to the &ldquo;Download CV&rdquo; buttons on the site:
+                      </p>
+                      <input
+                        type="file"
+                        accept="application/pdf"
+                        onChange={handleCvUpload}
+                        className="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700 cursor-pointer"
+                      />
+                    </div>
                   </div>
                 )}
 
@@ -347,14 +553,14 @@ export function LiveEditorDrawer() {
                       <h4 className="font-bold uppercase tracking-wider text-slate-400 text-[10px] mb-3">
                         Hero Counter Statistics
                       </h4>
-                      <div className="space-y-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {data.stats.map((stat, i) => (
                           <div
                             key={i}
-                            className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 grid grid-cols-2 gap-2"
+                            className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2"
                           >
                             <div>
-                              <span className="text-[10px] text-slate-500">Value (e.g. 6+, 99%)</span>
+                              <span className="text-[10px] text-slate-500">Metric Value</span>
                               <input
                                 type="text"
                                 value={stat.value}
@@ -363,7 +569,7 @@ export function LiveEditorDrawer() {
                               />
                             </div>
                             <div>
-                              <span className="text-[10px] text-slate-500">Label</span>
+                              <span className="text-[10px] text-slate-500">Metric Label</span>
                               <input
                                 type="text"
                                 value={stat.label}
@@ -380,7 +586,7 @@ export function LiveEditorDrawer() {
                       <h4 className="font-bold uppercase tracking-wider text-slate-400 text-[10px] mb-3">
                         Social Profile URLs
                       </h4>
-                      <div className="space-y-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {data.socials.map((soc, i) => (
                           <div key={soc.platform}>
                             <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
@@ -399,31 +605,87 @@ export function LiveEditorDrawer() {
                   </div>
                 )}
 
-                {/* TAB 3: SKILLS */}
+                {/* TAB 3: SKILLS (FULL CRUD: ADD/EDIT/DELETE SKILLS & CATEGORIES) */}
                 {activeTab === "skills" && (
-                  <div className="space-y-5">
-                    <p className="text-slate-500">
-                      Drag the sliders to adjust proficiency percentages or inspect how skill bars animate.
-                    </p>
+                  <div className="space-y-6">
+                    <div className="flex items-center justify-between">
+                      <p className="text-slate-500 text-xs">
+                        Add, customize, or delete skills and categories with instant live binding.
+                      </p>
+                      <button
+                        onClick={handleAddCategory}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs shadow-sm transition-all cursor-pointer"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Add Category</span>
+                      </button>
+                    </div>
+
                     {data.skills.map((category, catIdx) => (
                       <div
                         key={catIdx}
-                        className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 space-y-3"
+                        className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 space-y-4"
                       >
-                        <h4 className="font-bold text-slate-900 dark:text-white">
-                          {category.category}
-                        </h4>
-                        <div className="space-y-2.5">
+                        <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-700">
+                          <input
+                            type="text"
+                            value={category.category}
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              updateData((prev) => {
+                                const nextSkills = [...prev.skills];
+                                nextSkills[catIdx] = { ...nextSkills[catIdx], category: val };
+                                return { ...prev, skills: nextSkills };
+                              });
+                            }}
+                            className="font-bold text-slate-900 dark:text-white bg-transparent border-b border-dashed border-indigo-400 focus:outline-none text-sm"
+                          />
+
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => handleAddSkill(catIdx)}
+                              className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-semibold text-[11px] hover:bg-indigo-100 transition-colors cursor-pointer"
+                            >
+                              <Plus className="w-3 h-3" />
+                              <span>Add Skill</span>
+                            </button>
+                            <button
+                              onClick={() => handleDeleteCategory(catIdx)}
+                              className="p-1 text-slate-400 hover:text-rose-500 transition-colors cursor-pointer"
+                              title="Delete Category"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           {category.items.map((skill, skillIdx) => (
-                            <div key={skillIdx} className="space-y-1">
-                              <div className="flex justify-between items-center text-[11px]">
-                                <span className="font-medium text-slate-700 dark:text-slate-300">
-                                  {skill.name}
-                                </span>
-                                <span className="font-bold text-indigo-600 dark:text-indigo-400">
+                            <div
+                              key={skillIdx}
+                              className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 space-y-2"
+                            >
+                              <div className="flex items-center justify-between gap-2">
+                                <input
+                                  type="text"
+                                  value={skill.name}
+                                  onChange={(e) =>
+                                    handleSkillNameChange(catIdx, skillIdx, e.target.value)
+                                  }
+                                  className="font-semibold text-slate-800 dark:text-slate-200 bg-transparent border-b border-dashed border-slate-300 dark:border-slate-600 focus:outline-none text-xs w-full"
+                                />
+                                <span className="font-bold text-indigo-600 dark:text-indigo-400 shrink-0 text-xs">
                                   {skill.level}%
                                 </span>
+                                <button
+                                  onClick={() => handleDeleteSkill(catIdx, skillIdx)}
+                                  className="text-slate-400 hover:text-rose-500 transition-colors cursor-pointer p-0.5"
+                                  title="Delete Skill"
+                                >
+                                  <Trash2 className="w-3.5 h-3.5" />
+                                </button>
                               </div>
+
                               <input
                                 type="range"
                                 min="0"
@@ -436,7 +698,7 @@ export function LiveEditorDrawer() {
                                     parseInt(e.target.value, 10)
                                   )
                                 }
-                                className="w-full accent-indigo-600 cursor-pointer"
+                                className="w-full accent-indigo-600 cursor-pointer h-1.5"
                               />
                             </div>
                           ))}
@@ -446,82 +708,265 @@ export function LiveEditorDrawer() {
                   </div>
                 )}
 
-                {/* TAB 4: PROJECTS */}
+                {/* TAB 4: PROJECTS (FULL CRUD: ADD/EDIT/DELETE) */}
                 {activeTab === "projects" && (
                   <div className="space-y-4">
-                    <p className="text-slate-500">
-                      Quick edit project card headers, categories, and metrics.
-                    </p>
-                    {data.projects.map((proj, pIdx) => (
-                      <div
-                        key={proj.id}
-                        className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-3"
+                    <div className="flex items-center justify-between">
+                      <p className="text-slate-500 text-xs">
+                        Manage your projects portfolio: edit fields or add brand new project cards.
+                      </p>
+                      <button
+                        onClick={handleAddProject}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs shadow-sm transition-all cursor-pointer"
                       >
-                        <div>
-                          <label className="block text-[10px] font-bold text-slate-400 uppercase">
-                            Project Title
-                          </label>
-                          <input
-                            type="text"
-                            value={proj.title}
-                            onChange={(e) =>
-                              handleProjectChange(pIdx, "title", e.target.value)
-                            }
-                            className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 font-semibold"
-                          />
-                        </div>
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Add Project</span>
+                      </button>
+                    </div>
 
-                        <div className="grid grid-cols-2 gap-2">
+                    <div className="space-y-4">
+                      {data.projects.map((proj, pIdx) => (
+                        <div
+                          key={proj.id}
+                          className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-3"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="font-bold text-indigo-600 dark:text-indigo-400 text-xs">
+                              Project #{pIdx + 1}
+                            </span>
+                            <button
+                              onClick={() => handleDeleteProject(proj.id)}
+                              className="text-slate-400 hover:text-rose-500 transition-colors cursor-pointer p-1"
+                              title="Delete project"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                              <label className="block text-[10px] font-bold text-slate-400 uppercase">
+                                Project Title
+                              </label>
+                              <input
+                                type="text"
+                                value={proj.title}
+                                onChange={(e) =>
+                                  handleProjectChange(pIdx, "title", e.target.value)
+                                }
+                                className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 font-semibold"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-[10px] font-bold text-slate-400 uppercase">
+                                Category
+                              </label>
+                              <input
+                                type="text"
+                                value={proj.category}
+                                onChange={(e) =>
+                                  handleProjectChange(pIdx, "category", e.target.value)
+                                }
+                                className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                              <label className="block text-[10px] font-bold text-slate-400 uppercase">
+                                Metric / Highlight Pill
+                              </label>
+                              <input
+                                type="text"
+                                value={proj.metric || ""}
+                                onChange={(e) =>
+                                  handleProjectChange(pIdx, "metric", e.target.value)
+                                }
+                                placeholder="e.g. 10,000+ Users"
+                                className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-[10px] font-bold text-slate-400 uppercase">
+                                Tech Stack Tags (comma separated)
+                              </label>
+                              <input
+                                type="text"
+                                value={proj.tags.join(", ")}
+                                onChange={(e) =>
+                                  handleProjectChange(pIdx, "tagsString", e.target.value)
+                                }
+                                placeholder="Next.js, React, Tailwind CSS"
+                                className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700"
+                              />
+                            </div>
+                          </div>
+
                           <div>
                             <label className="block text-[10px] font-bold text-slate-400 uppercase">
-                              Category
+                              Summary Description
                             </label>
-                            <input
-                              type="text"
-                              value={proj.category}
+                            <textarea
+                              rows={2}
+                              value={proj.description}
                               onChange={(e) =>
-                                handleProjectChange(pIdx, "category", e.target.value)
+                                handleProjectChange(pIdx, "description", e.target.value)
                               }
-                              className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700"
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-[10px] font-bold text-slate-400 uppercase">
-                              Metric Tag
-                            </label>
-                            <input
-                              type="text"
-                              value={proj.metric || ""}
-                              onChange={(e) =>
-                                handleProjectChange(pIdx, "metric", e.target.value)
-                              }
-                              className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700"
+                              className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 resize-none"
                             />
                           </div>
                         </div>
-
-                        <div>
-                          <label className="block text-[10px] font-bold text-slate-400 uppercase">
-                            Summary Description
-                          </label>
-                          <textarea
-                            rows={2}
-                            value={proj.description}
-                            onChange={(e) =>
-                              handleProjectChange(pIdx, "description", e.target.value)
-                            }
-                            className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 resize-none"
-                          />
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 )}
 
-                {/* TAB 5: CONTACT & WEB3FORMS KEY */}
+                {/* TAB 5: EXPERIENCE & TIMELINE CRUD */}
+                {activeTab === "experience" && (
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <p className="text-slate-500 text-xs">
+                        Manage your professional work history and career timeline milestones.
+                      </p>
+                      <button
+                        onClick={handleAddExperience}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs shadow-sm transition-all cursor-pointer"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Add Experience</span>
+                      </button>
+                    </div>
+
+                    <div className="space-y-4">
+                      {data.experience.map((exp, expIdx) => (
+                        <div
+                          key={exp.id}
+                          className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-3"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="font-bold text-indigo-600 dark:text-indigo-400 text-xs">
+                              Position #{expIdx + 1}
+                            </span>
+                            <button
+                              onClick={() => handleDeleteExperience(exp.id)}
+                              className="text-slate-400 hover:text-rose-500 transition-colors cursor-pointer p-1"
+                              title="Delete position"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                              <label className="block text-[10px] font-bold text-slate-400 uppercase">
+                                Role / Title
+                              </label>
+                              <input
+                                type="text"
+                                value={exp.role}
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  updateData((prev) => {
+                                    const nextExp = [...prev.experience];
+                                    nextExp[expIdx] = { ...nextExp[expIdx], role: val };
+                                    return { ...prev, experience: nextExp };
+                                  });
+                                }}
+                                className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 font-semibold"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-[10px] font-bold text-slate-400 uppercase">
+                                Company Name
+                              </label>
+                              <input
+                                type="text"
+                                value={exp.company}
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  updateData((prev) => {
+                                    const nextExp = [...prev.experience];
+                                    nextExp[expIdx] = { ...nextExp[expIdx], company: val };
+                                    return { ...prev, experience: nextExp };
+                                  });
+                                }}
+                                className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                              <label className="block text-[10px] font-bold text-slate-400 uppercase">
+                                Period
+                              </label>
+                              <input
+                                type="text"
+                                value={exp.period}
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  updateData((prev) => {
+                                    const nextExp = [...prev.experience];
+                                    nextExp[expIdx] = { ...nextExp[expIdx], period: val };
+                                    return { ...prev, experience: nextExp };
+                                  });
+                                }}
+                                placeholder="e.g. 2022 - Present"
+                                className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-[10px] font-bold text-slate-400 uppercase">
+                                Location & Type
+                              </label>
+                              <input
+                                type="text"
+                                value={`${exp.location} • ${exp.type}`}
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  updateData((prev) => {
+                                    const nextExp = [...prev.experience];
+                                    nextExp[expIdx] = { ...nextExp[expIdx], location: val };
+                                    return { ...prev, experience: nextExp };
+                                  });
+                                }}
+                                className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <label className="block text-[10px] font-bold text-slate-400 uppercase">
+                              Role Summary
+                            </label>
+                            <textarea
+                              rows={2}
+                              value={exp.description}
+                              onChange={(e) => {
+                                const val = e.target.value;
+                                updateData((prev) => {
+                                  const nextExp = [...prev.experience];
+                                  nextExp[expIdx] = { ...nextExp[expIdx], description: val };
+                                  return { ...prev, experience: nextExp };
+                                });
+                              }}
+                              className="w-full px-2.5 py-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 resize-none"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* TAB 6: CONTACT & WEB3FORMS KEY */}
                 {activeTab === "contact" && (
                   <div className="space-y-4">
-                    {/* Explanation Box for What is Form Key */}
                     <div className="p-4 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 space-y-2">
                       <div className="flex items-center gap-2 font-bold text-indigo-900 dark:text-indigo-200 text-xs">
                         <Sparkles className="w-4 h-4 text-indigo-500" />
@@ -541,60 +986,64 @@ export function LiveEditorDrawer() {
                       </a>
                     </div>
 
-                    <div>
-                      <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                        Web3Forms Access Key
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. 5a1b3c4d-xxxx-xxxx-xxxx"
-                        value={data.contact.web3FormsAccessKey}
-                        onChange={(e) =>
-                          handleContactChange("web3FormsAccessKey", e.target.value)
-                        }
-                        className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-[11px]"
-                      />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                          Web3Forms Access Key
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="e.g. 5a1b3c4d-xxxx-xxxx-xxxx"
+                          value={data.contact.web3FormsAccessKey}
+                          onChange={(e) =>
+                            handleContactChange("web3FormsAccessKey", e.target.value)
+                          }
+                          className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-[11px]"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                          Contact / Forwarding Email
+                        </label>
+                        <input
+                          type="email"
+                          value={data.contact.email}
+                          onChange={(e) => handleContactChange("email", e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
+                        />
+                      </div>
                     </div>
 
-                    <div>
-                      <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                        Contact / Forwarding Email
-                      </label>
-                      <input
-                        type="email"
-                        value={data.contact.email}
-                        onChange={(e) => handleContactChange("email", e.target.value)}
-                        className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
-                      />
-                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                          Phone / WhatsApp
+                        </label>
+                        <input
+                          type="text"
+                          value={data.contact.phone || data.personal.phone || ""}
+                          onChange={(e) => handleContactChange("phone", e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
+                        />
+                      </div>
 
-                    <div>
-                      <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                        Phone / WhatsApp
-                      </label>
-                      <input
-                        type="text"
-                        value={data.contact.phone || data.personal.phone || ""}
-                        onChange={(e) => handleContactChange("phone", e.target.value)}
-                        className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                        Calendly Video Booking Link (Optional)
-                      </label>
-                      <input
-                        type="text"
-                        value={data.contact.calendlyUrl || ""}
-                        onChange={(e) => handleContactChange("calendlyUrl", e.target.value)}
-                        className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-[11px]"
-                      />
+                      <div>
+                        <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                          Calendly Video Booking Link (Optional)
+                        </label>
+                        <input
+                          type="text"
+                          value={data.contact.calendlyUrl || ""}
+                          onChange={(e) => handleContactChange("calendlyUrl", e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-mono text-[11px]"
+                        />
+                      </div>
                     </div>
                   </div>
                 )}
 
-                {/* TAB 6: RAW JSON EDITOR */}
+                {/* TAB 7: RAW JSON EDITOR */}
                 {activeTab === "json" && (
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">

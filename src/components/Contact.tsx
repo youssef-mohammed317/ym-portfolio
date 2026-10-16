@@ -14,6 +14,7 @@ import {
   Check,
   Clock,
   Sparkles,
+  ChevronDown,
 } from "lucide-react";
 
 export function Contact() {
@@ -31,6 +32,15 @@ export function Contact() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
+
+  const serviceOptions = [
+    "Full-Stack Web App",
+    "Next.js Frontend / UI",
+    "SaaS Architecture",
+    "Full-Time Hire / Contract",
+    "Other Consultation",
+  ];
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(contact.email || data.personal.email);
@@ -347,19 +357,51 @@ export function Contact() {
                     <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                       Project Type
                     </label>
-                    <select
-                      value={formData.serviceType}
-                      onChange={(e) =>
-                        setFormData({ ...formData, serviceType: e.target.value })
-                      }
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    >
-                      <option value="Full-Stack Web App">Full-Stack Web App</option>
-                      <option value="Next.js Frontend / UI">Next.js Frontend / UI</option>
-                      <option value="SaaS Architecture">SaaS Architecture</option>
-                      <option value="Full-Time Hire / Contract">Full-Time Hire / Contract</option>
-                      <option value="Other Consultation">Other Consultation</option>
-                    </select>
+                    <div className="relative">
+                      <button
+                        type="button"
+                        onClick={() => setIsSelectOpen(!isSelectOpen)}
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 flex items-center justify-between cursor-pointer"
+                      >
+                        <span className="truncate">{formData.serviceType}</span>
+                        <ChevronDown
+                          className={`w-4 h-4 text-slate-400 transition-transform duration-200 shrink-0 ml-2 ${
+                            isSelectOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+
+                      {isSelectOpen && (
+                        <>
+                          <div
+                            className="fixed inset-0 z-20"
+                            onClick={() => setIsSelectOpen(false)}
+                          />
+                          <div className="absolute left-0 right-0 top-full mt-2 z-30 p-1.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-1 animate-fadeIn">
+                            {serviceOptions.map((opt) => (
+                              <button
+                                key={opt}
+                                type="button"
+                                onClick={() => {
+                                  setFormData({ ...formData, serviceType: opt });
+                                  setIsSelectOpen(false);
+                                }}
+                                className={`w-full px-3 py-2.5 rounded-xl text-left text-xs sm:text-sm font-medium flex items-center justify-between transition-colors cursor-pointer ${
+                                  formData.serviceType === opt
+                                    ? "bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 font-semibold"
+                                    : "text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                                }`}
+                              >
+                                <span>{opt}</span>
+                                {formData.serviceType === opt && (
+                                  <Check className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+                                )}
+                              </button>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
                   </div>
 
                   {/* Subject */}

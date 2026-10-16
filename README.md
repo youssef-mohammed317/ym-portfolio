@@ -70,13 +70,36 @@ npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### 3. Build for Production
+### 3. Build for Production (Static HTML Export)
 ```bash
 npm run build
 ```
+This generates the standalone `out/` directory, optimized for Cloudflare Pages, Vercel, Netlify, or any static host.
+
+---
+
+## ⚡ Cloudflare Pages Deployment
+
+This template is 100% pre-configured for Cloudflare Pages with zero-config edge hosting:
+
+### Option A: Cloudflare Dashboard (1-Click Git Integration)
+1. Go to the [Cloudflare Dashboard](https://dash.cloudflare.com/) > **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
+2. Select your repository: `ym-dev-studio/developer-portfolio-template`.
+3. Set the following build settings:
+   - **Framework preset**: `None` or `Next.js (Static HTML Export)`
+   - **Build command**: `npm run build`
+   - **Build output directory**: `out`
+   - **Node.js version**: `20` (add environment variable `NODE_VERSION = 20`)
+4. Click **Save and Deploy**. Every push to `main` or `master` will automatically deploy live.
+
+### Option B: Automated GitHub Actions CI/CD
+The included `.github/workflows/ci-cd.yml` pipeline automatically tests and deploys your site on every push.
+To enable direct deployment via the GitHub workflow, add these two repository secrets in **GitHub Repo Settings > Secrets and variables > Actions**:
+- `CLOUDFLARE_API_TOKEN`: Your Cloudflare API Token with *Cloudflare Pages: Edit* permissions.
+- `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare Account ID found in the dashboard URL or overview.
 
 ---
 
 ## 📖 Client Customization
 
-See the comprehensive [CUSTOMIZATION_GUIDE.md](./CUSTOMIZATION_GUIDE.md) for detailed Arabic & English instructions on customizing `data.json`, setting up the free Web3Forms email key, and 1-click deployment to Vercel/Netlify.
+See the comprehensive [CUSTOMIZATION_GUIDE.md](./CUSTOMIZATION_GUIDE.md) for detailed Arabic & English instructions on customizing `data.json`, setting up the free Web3Forms email key, and 1-click deployment to Cloudflare Pages, Vercel, or Netlify.

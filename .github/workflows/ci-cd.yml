@@ -1,0 +1,78 @@
+name: CI/CD Pipeline & Cloudflare Pages Deployment
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  build-and-test:
+    name: Build & Static Export Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js Static Export
+        run: npm run build
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cloudflare-pages-build
+          path: out
+          retention-days: 7
+
+  deploy:
+    name: Deploy to Cloudflare Pages
+    needs: build-and-test
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: cloudflare-pages-build
+          path: out
+
+      - name: Check Cloudflare Credentials
+        id: check_creds
+        run: |
+          if [ -n "${{ secrets.CLOUDFLARE_API_TOKEN }}" ] && [ -n "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ]; then
+            echo "has_creds=true" >> $GITHUB_OUTPUT
+            echo "Cloudflare credentials detected in GitHub Secrets."
+          else
+            echo "has_creds=false" >> $GITHUB_OUTPUT
+            echo "Notice: CLOUDFLARE_API_TOKEN and/or CLOUDFLARE_ACCOUNT_ID secrets are not set in GitHub repository settings."
+            echo "If you are using Cloudflare Pages direct Git integration, Cloudflare builds and deploys directly from your commits."
+          fi
+
+      - name: Deploy via Wrangler Action
+        if: steps.check_creds.outputs.has_creds == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy out --project-name=developer-portfolio-template --commit-dirty=true

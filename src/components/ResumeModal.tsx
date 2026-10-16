@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { usePortfolio } from "@/context/PortfolioContext";
 import { X, Download, Printer, MapPin, Mail, Phone } from "lucide-react";
 
@@ -11,24 +11,45 @@ interface ResumeModalProps {
 
 export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   const { data } = usePortfolio();
+  const [isRendered, setIsRendered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsRendered(true);
+      document.body.style.overflow = "hidden";
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsVisible(true);
+        });
+      });
+    } else {
+      setIsVisible(false);
+      const timer = setTimeout(() => {
+        setIsRendered(false);
+        document.body.style.overflow = "auto";
+      }, 260);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape" && isRendered) handleClose();
     };
 
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  });
 
-    return () => {
-      document.body.style.overflow = "auto";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, onClose]);
+  const handleClose = () => {
+    setIsVisible(false);
+    setTimeout(() => {
+      onClose();
+    }, 260);
+  };
 
-  if (!isOpen) return null;
+  if (!isRendered) return null;
 
   const handlePrint = () => {
     window.print();
@@ -37,14 +58,20 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   return (
     <div
       onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
+        if (e.target === e.currentTarget) handleClose();
       }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-slate-950/75 backdrop-blur-sm print:p-0 print:bg-white cursor-pointer animate-fadeIn"
+      className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-slate-950/75 backdrop-blur-sm print:p-0 print:bg-white cursor-pointer transition-opacity duration-250 ease-out ${
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
     >
-      {/* Modal Card */}
+      {/* Modal Card with smooth scale & fade transition */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-4xl rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden my-6 print:border-0 print:shadow-none print:m-0 print:max-w-none print:bg-white print:text-black cursor-default"
+        className={`relative w-full max-w-4xl rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden my-6 print:border-0 print:shadow-none print:m-0 print:max-w-none print:bg-white print:text-black cursor-default transform transition-all duration-250 ease-out ${
+          isVisible
+            ? "scale-100 translate-y-0 opacity-100"
+            : "scale-95 translate-y-4 opacity-0"
+        }`}
       >
         {/* Action Header (Hidden in Print) */}
         <div className="p-4 sm:p-5 bg-slate-50 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between print:hidden">
@@ -62,7 +89,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             <a
               href={data.personal.resumeUrl || "/resume.pdf"}
               download
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition-all hover:scale-[1.02]"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download PDF</span>
@@ -79,7 +106,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
             {/* Close Button */}
             <button
-              onClick={onClose}
+              onClick={handleClose}
               className="p-1.5 rounded-xl text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer ml-1"
               aria-label="Close"
             >
@@ -88,7 +115,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           </div>
         </div>
 
-        {/* Resume Content Sheet (Adapts to Dark Theme on screen, prints as clean Black/White on paper) */}
+        {/* Resume Content Sheet */}
         <div className="p-6 sm:p-10 max-h-[75vh] overflow-y-auto space-y-8 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 print:max-h-none print:overflow-visible print:p-0 print:bg-white print:text-black">
           {/* Header */}
           <div className="border-b border-slate-200 dark:border-slate-800 print:border-slate-300 pb-6 flex flex-col sm:flex-row sm:items-start justify-between gap-4">

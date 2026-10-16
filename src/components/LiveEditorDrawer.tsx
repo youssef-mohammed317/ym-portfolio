@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { usePortfolio } from "@/context/PortfolioContext";
-import { PortfolioData, ProjectItem, SkillItem } from "@/types/portfolio";
+import { PortfolioData } from "@/types/portfolio";
 import {
   SlidersHorizontal,
   X,
@@ -28,20 +28,21 @@ type ActiveTab = "personal" | "stats" | "skills" | "projects" | "experience" | "
 
 export function LiveEditorDrawer() {
   const { data, updateData, resetData, exportDataJson, isModified } = usePortfolio();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isRendered, setIsRendered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState<ActiveTab>("personal");
   const [jsonText, setJsonText] = useState("");
   const [jsonError, setJsonError] = useState<string | null>(null);
   const [appliedJson, setAppliedJson] = useState(false);
   const [uploadedCvName, setUploadedCvName] = useState<string | null>(null);
 
-  // Close on Escape key and prevent background scroll when open
+  // Close on Escape key and manage body overflow
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsOpen(false);
+      if (e.key === "Escape" && isRendered) handleClose();
     };
 
-    if (isOpen) {
+    if (isRendered) {
       document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
     }
@@ -50,7 +51,7 @@ export function LiveEditorDrawer() {
       document.body.style.overflow = "auto";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen]);
+  }, [isRendered]);
 
   if (!data.siteMetadata.enableLiveEditor) {
     return null;
@@ -59,7 +60,21 @@ export function LiveEditorDrawer() {
   const handleOpen = () => {
     setJsonText(JSON.stringify(data, null, 2));
     setJsonError(null);
-    setIsOpen(true);
+    setIsRendered(true);
+    // Trigger smooth slide-in
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setIsVisible(true);
+      });
+    });
+  };
+
+  const handleClose = () => {
+    setIsVisible(false);
+    // Wait for transition animation to finish before unmounting
+    setTimeout(() => {
+      setIsRendered(false);
+    }, 280);
   };
 
   const handlePersonalChange = (field: string, val: unknown) => {
@@ -288,7 +303,7 @@ export function LiveEditorDrawer() {
       <div className="fixed bottom-6 right-6 z-40">
         <button
           onClick={handleOpen}
-          className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-xl hover:shadow-2xl hover:scale-105 transition-all border border-slate-700/50 dark:border-slate-200/50 cursor-pointer"
+          className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all border border-slate-700/50 dark:border-slate-200/50 cursor-pointer"
         >
           <SlidersHorizontal className="w-4 h-4 text-indigo-400 dark:text-indigo-600 animate-pulse" />
           <span className="text-xs font-bold tracking-tight">Full Live Customizer</span>
@@ -298,19 +313,25 @@ export function LiveEditorDrawer() {
         </button>
       </div>
 
-      {/* Slide-Over Drawer with Clickable Backdrop */}
-      {isOpen && (
+      {/* Slide-Over Drawer with smooth slide-in and slide-out transitions */}
+      {isRendered && (
         <div className="fixed inset-0 z-50 overflow-hidden">
-          {/* Backdrop: Clicking outside closes drawer */}
+          {/* Backdrop: Fades smoothly in and out */}
           <div
-            onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-slate-950/65 backdrop-blur-sm transition-opacity cursor-pointer animate-fadeIn"
+            onClick={handleClose}
+            className={`fixed inset-0 bg-slate-950/65 backdrop-blur-sm transition-opacity duration-280 ease-out cursor-pointer ${
+              isVisible ? "opacity-100" : "opacity-0"
+            }`}
             aria-label="Close backdrop"
           />
 
           <div className="absolute inset-y-0 right-0 max-w-full flex pointer-events-none">
-            {/* Wider container: max-w-2xl sm:max-w-3xl lg:max-w-4xl eliminates horizontal scroll and provides ample editing space */}
-            <div className="w-screen max-w-2xl sm:max-w-3xl lg:max-w-4xl bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between pointer-events-auto">
+            {/* Drawer Panel: Slides smoothly from right to left and back */}
+            <div
+              className={`w-screen max-w-2xl sm:max-w-3xl lg:max-w-4xl bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between pointer-events-auto transform transition-transform duration-280 ease-out ${
+                isVisible ? "translate-x-0" : "translate-x-full"
+              }`}
+            >
               {/* Header */}
               <div className="p-4 sm:p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
@@ -328,7 +349,7 @@ export function LiveEditorDrawer() {
                 </div>
 
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleClose}
                   className="p-2 rounded-xl text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                   title="Close (Esc)"
                 >
@@ -614,7 +635,7 @@ export function LiveEditorDrawer() {
                       </p>
                       <button
                         onClick={handleAddCategory}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs shadow-sm transition-all cursor-pointer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                       >
                         <Plus className="w-3.5 h-3.5" />
                         <span>Add Category</span>
@@ -642,16 +663,17 @@ export function LiveEditorDrawer() {
                           />
 
                           <div className="flex items-center gap-2">
+                            {/* Fixed Add Skill Hover button */}
                             <button
                               onClick={() => handleAddSkill(catIdx)}
-                              className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-semibold text-[11px] hover:bg-indigo-100 transition-colors cursor-pointer"
+                              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 font-semibold text-[11px] hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition-all cursor-pointer shadow-sm"
                             >
                               <Plus className="w-3 h-3" />
                               <span>Add Skill</span>
                             </button>
                             <button
                               onClick={() => handleDeleteCategory(catIdx)}
-                              className="p-1 text-slate-400 hover:text-rose-500 transition-colors cursor-pointer"
+                              className="p-1 rounded-lg text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
                               title="Delete Category"
                             >
                               <Trash2 className="w-4 h-4" />
@@ -663,7 +685,7 @@ export function LiveEditorDrawer() {
                           {category.items.map((skill, skillIdx) => (
                             <div
                               key={skillIdx}
-                              className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 space-y-2"
+                              className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 space-y-2 shadow-xs"
                             >
                               <div className="flex items-center justify-between gap-2">
                                 <input
@@ -679,7 +701,7 @@ export function LiveEditorDrawer() {
                                 </span>
                                 <button
                                   onClick={() => handleDeleteSkill(catIdx, skillIdx)}
-                                  className="text-slate-400 hover:text-rose-500 transition-colors cursor-pointer p-0.5"
+                                  className="text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded p-1 transition-colors cursor-pointer"
                                   title="Delete Skill"
                                 >
                                   <Trash2 className="w-3.5 h-3.5" />
@@ -717,7 +739,7 @@ export function LiveEditorDrawer() {
                       </p>
                       <button
                         onClick={handleAddProject}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs shadow-sm transition-all cursor-pointer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                       >
                         <Plus className="w-3.5 h-3.5" />
                         <span>Add Project</span>
@@ -736,7 +758,7 @@ export function LiveEditorDrawer() {
                             </span>
                             <button
                               onClick={() => handleDeleteProject(proj.id)}
-                              className="text-slate-400 hover:text-rose-500 transition-colors cursor-pointer p-1"
+                              className="text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 p-1.5 rounded-lg transition-colors cursor-pointer"
                               title="Delete project"
                             >
                               <Trash2 className="w-4 h-4" />
@@ -833,7 +855,7 @@ export function LiveEditorDrawer() {
                       </p>
                       <button
                         onClick={handleAddExperience}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs shadow-sm transition-all cursor-pointer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                       >
                         <Plus className="w-3.5 h-3.5" />
                         <span>Add Experience</span>
@@ -852,7 +874,7 @@ export function LiveEditorDrawer() {
                             </span>
                             <button
                               onClick={() => handleDeleteExperience(exp.id)}
-                              className="text-slate-400 hover:text-rose-500 transition-colors cursor-pointer p-1"
+                              className="text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 p-1.5 rounded-lg transition-colors cursor-pointer"
                               title="Delete position"
                             >
                               <Trash2 className="w-4 h-4" />
@@ -1043,7 +1065,7 @@ export function LiveEditorDrawer() {
                   </div>
                 )}
 
-                {/* TAB 7: RAW JSON EDITOR */}
+                {/* TAB 7: RAW JSON EDITOR WITH SLEEK DARK SCROLLBAR */}
                 {activeTab === "json" && (
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
@@ -1052,30 +1074,31 @@ export function LiveEditorDrawer() {
                       </span>
                       <button
                         onClick={handleApplyJson}
-                        className="px-3 py-1 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] shadow-sm transition-all cursor-pointer"
+                        className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                       >
                         Apply JSON Live
                       </button>
                     </div>
 
                     {appliedJson && (
-                      <div className="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 text-emerald-800 dark:text-emerald-200 flex items-center gap-2">
+                      <div className="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 flex items-center gap-2">
                         <Check className="w-4 h-4 text-emerald-500" />
                         <span>Changes applied successfully across the entire site!</span>
                       </div>
                     )}
 
                     {jsonError && (
-                      <div className="p-2.5 rounded-lg bg-rose-50 dark:bg-rose-950/60 border border-rose-300 text-rose-800 dark:text-rose-200">
+                      <div className="p-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 text-rose-800 dark:text-rose-200">
                         {jsonError}
                       </div>
                     )}
 
+                    {/* Styled Textarea without ugly Windows scrollbars */}
                     <textarea
-                      rows={16}
+                      rows={18}
                       value={jsonText}
                       onChange={(e) => setJsonText(e.target.value)}
-                      className="w-full p-3 font-mono text-[11px] rounded-xl bg-slate-900 text-slate-100 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      className="w-full p-4 font-mono text-[11px] sm:text-xs leading-relaxed rounded-2xl bg-slate-950 text-slate-100 border border-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-inner"
                       spellCheck={false}
                     />
                   </div>
@@ -1086,7 +1109,7 @@ export function LiveEditorDrawer() {
               <div className="p-4 sm:p-5 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 space-y-2">
                 <button
                   onClick={exportDataJson}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition-all cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
                   <span>Export & Download data.json</span>

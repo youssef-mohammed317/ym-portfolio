@@ -29,6 +29,20 @@ export function Contact() {
     message: "",
   });
 
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+    subject?: string;
+    message?: string;
+  }>({});
+
+  const [touched, setTouched] = useState<{
+    name?: boolean;
+    email?: boolean;
+    subject?: boolean;
+    message?: boolean;
+  }>({});
+
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -48,8 +62,98 @@ export function Contact() {
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
+  const validateField = (
+    field: "name" | "email" | "subject" | "message",
+    value: string
+  ): string => {
+    switch (field) {
+      case "name":
+        if (!value.trim()) return "Please enter your name.";
+        if (value.trim().length < 2) return "Name must be at least 2 characters.";
+        if (value.trim().length > 60) return "Name cannot exceed 60 characters.";
+        return "";
+      case "email":
+        if (!value.trim()) return "Please enter your email address.";
+        // Strict email pattern
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value.trim())) {
+          return "Please enter a valid email address (e.g. name@company.com).";
+        }
+        return "";
+      case "subject":
+        if (value.length > 100) return "Subject cannot exceed 100 characters.";
+        return "";
+      case "message":
+        if (!value.trim()) return "Please enter your message.";
+        if (value.trim().length < 10) {
+          return "Please provide at least 10 characters so I understand your inquiry.";
+        }
+        if (value.trim().length > 2000) return "Message cannot exceed 2000 characters.";
+        return "";
+      default:
+        return "";
+    }
+  };
+
+  const validateAll = (data: typeof formData) => {
+    const errs: { name?: string; email?: string; subject?: string; message?: string } = {};
+    const nameErr = validateField("name", data.name);
+    if (nameErr) errs.name = nameErr;
+
+    const emailErr = validateField("email", data.email);
+    if (emailErr) errs.email = emailErr;
+
+    const subjectErr = validateField("subject", data.subject);
+    if (subjectErr) errs.subject = subjectErr;
+
+    const messageErr = validateField("message", data.message);
+    if (messageErr) errs.message = messageErr;
+
+    return errs;
+  };
+
+  const handleInputChange = (
+    field: "name" | "email" | "subject" | "message",
+    value: string
+  ) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (touched[field]) {
+      const err = validateField(field, value);
+      setErrors((prev) => ({ ...prev, [field]: err || undefined }));
+    }
+  };
+
+  const handleInputBlur = (field: "name" | "email" | "subject" | "message") => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+    const err = validateField(field, formData[field]);
+    setErrors((prev) => ({ ...prev, [field]: err || undefined }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Mark all required fields as touched
+    setTouched({
+      name: true,
+      email: true,
+      subject: true,
+      message: true,
+    });
+
+    const formErrors = validateAll(formData);
+    setErrors(formErrors);
+
+    if (Object.keys(formErrors).length > 0) {
+      // Focus the first invalid input
+      const firstField = (["name", "email", "subject", "message"] as const).find(
+        (f) => formErrors[f]
+      );
+      if (firstField) {
+        const el = document.getElementById(`contact-${firstField}`);
+        el?.focus();
+      }
+      return;
+    }
+
     setStatus("submitting");
     setErrorMessage("");
 
@@ -73,6 +177,8 @@ export function Contact() {
           serviceType: "Full-Stack Web App",
           message: "",
         });
+        setErrors({});
+        setTouched({});
       }, 900);
       return;
     }
@@ -98,6 +204,8 @@ export function Contact() {
             serviceType: "Full-Stack Web App",
             message: "",
           });
+          setErrors({});
+          setTouched({});
         } else {
           throw new Error("Failed to send message via Formspree.");
         }
@@ -129,6 +237,8 @@ export function Contact() {
             serviceType: "Full-Stack Web App",
             message: "",
           });
+          setErrors({});
+          setTouched({});
         } else {
           throw new Error(result.message || "Failed to send message through Web3Forms.");
         }
@@ -318,36 +428,90 @@ export function Contact() {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} noValidate className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {/* Name */}
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                      Your Name <span className="text-indigo-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Jane Doe"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label htmlFor="contact-name" className="block text-xs font-bold text-slate-700 dark:text-slate-300">
+                        Your Name <span className="text-indigo-500">*</span>
+                      </label>
+                      {touched.name && !errors.name && formData.name.trim().length >= 2 && (
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 animate-fadeIn">
+                          <Check className="w-3 h-3" /> Valid
+                        </span>
+                      )}
+                    </div>
+                    <div className="relative">
+                      <input
+                        id="contact-name"
+                        type="text"
+                        placeholder="e.g. Jane Doe"
+                        value={formData.name}
+                        onChange={(e) => handleInputChange("name", e.target.value)}
+                        onBlur={() => handleInputBlur("name")}
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/70 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-all ${
+                          touched.name && errors.name
+                            ? "border-rose-400 dark:border-rose-500/80 focus:ring-2 focus:ring-rose-500/20 bg-rose-50/20 dark:bg-rose-950/20 pr-10"
+                            : touched.name && !errors.name && formData.name.trim().length >= 2
+                            ? "border-emerald-500/50 dark:border-emerald-500/40 focus:ring-2 focus:ring-emerald-500/20 pr-10"
+                            : "border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-indigo-500"
+                        }`}
+                      />
+                      {touched.name && errors.name && (
+                        <div className="absolute right-3.5 top-1/2 -translate-y-1/2 text-rose-500 pointer-events-none">
+                          <AlertCircle className="w-4 h-4" />
+                        </div>
+                      )}
+                    </div>
+                    {touched.name && errors.name && (
+                      <p className="mt-1.5 flex items-center gap-1.5 text-xs text-rose-500 dark:text-rose-400 font-medium animate-fadeIn">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.name}</span>
+                      </p>
+                    )}
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                      Your Email <span className="text-indigo-500">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="e.g. jane@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label htmlFor="contact-email" className="block text-xs font-bold text-slate-700 dark:text-slate-300">
+                        Your Email <span className="text-indigo-500">*</span>
+                      </label>
+                      {touched.email && !errors.email && formData.email.trim().length > 0 && (
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 animate-fadeIn">
+                          <Check className="w-3 h-3" /> Valid
+                        </span>
+                      )}
+                    </div>
+                    <div className="relative">
+                      <input
+                        id="contact-email"
+                        type="email"
+                        placeholder="e.g. jane@company.com"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange("email", e.target.value)}
+                        onBlur={() => handleInputBlur("email")}
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/70 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-all ${
+                          touched.email && errors.email
+                            ? "border-rose-400 dark:border-rose-500/80 focus:ring-2 focus:ring-rose-500/20 bg-rose-50/20 dark:bg-rose-950/20 pr-10"
+                            : touched.email && !errors.email && formData.email.trim().length > 0
+                            ? "border-emerald-500/50 dark:border-emerald-500/40 focus:ring-2 focus:ring-emerald-500/20 pr-10"
+                            : "border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-indigo-500"
+                        }`}
+                      />
+                      {touched.email && errors.email && (
+                        <div className="absolute right-3.5 top-1/2 -translate-y-1/2 text-rose-500 pointer-events-none">
+                          <AlertCircle className="w-4 h-4" />
+                        </div>
+                      )}
+                    </div>
+                    {touched.email && errors.email && (
+                      <p className="mt-1.5 flex items-center gap-1.5 text-xs text-rose-500 dark:text-rose-400 font-medium animate-fadeIn">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.email}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -406,32 +570,83 @@ export function Contact() {
 
                   {/* Subject */}
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                      Subject
-                    </label>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label htmlFor="contact-subject" className="block text-xs font-bold text-slate-700 dark:text-slate-300">
+                        Subject <span className="text-slate-400 font-normal">(Optional)</span>
+                      </label>
+                    </div>
                     <input
+                      id="contact-subject"
                       type="text"
                       placeholder="e.g. Project inquiry"
                       value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      onChange={(e) => handleInputChange("subject", e.target.value)}
+                      onBlur={() => handleInputBlur("subject")}
+                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/70 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-all ${
+                        touched.subject && errors.subject
+                          ? "border-rose-400 dark:border-rose-500/80 focus:ring-2 focus:ring-rose-500/20 bg-rose-50/20 dark:bg-rose-950/20"
+                          : "border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-indigo-500"
+                      }`}
                     />
+                    {touched.subject && errors.subject && (
+                      <p className="mt-1.5 flex items-center gap-1.5 text-xs text-rose-500 dark:text-rose-400 font-medium animate-fadeIn">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.subject}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                    Your Message <span className="text-indigo-500">*</span>
-                  </label>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label htmlFor="contact-message" className="block text-xs font-bold text-slate-700 dark:text-slate-300">
+                      Your Message <span className="text-indigo-500">*</span>
+                    </label>
+                    {touched.message && !errors.message && formData.message.trim().length >= 10 && (
+                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 animate-fadeIn">
+                        <Check className="w-3 h-3" /> Valid
+                      </span>
+                    )}
+                  </div>
                   <textarea
-                    required
+                    id="contact-message"
                     rows={5}
                     placeholder="Tell me about your goals, timeline, and requirements..."
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+                    onChange={(e) => handleInputChange("message", e.target.value)}
+                    onBlur={() => handleInputBlur("message")}
+                    className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/70 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-all resize-none ${
+                      touched.message && errors.message
+                        ? "border-rose-400 dark:border-rose-500/80 focus:ring-2 focus:ring-rose-500/20 bg-rose-50/20 dark:bg-rose-950/20"
+                        : touched.message && !errors.message && formData.message.trim().length >= 10
+                        ? "border-emerald-500/50 dark:border-emerald-500/40 focus:ring-2 focus:ring-emerald-500/20"
+                        : "border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-indigo-500"
+                    }`}
                   />
+                  <div className="flex items-center justify-between mt-1.5">
+                    <div>
+                      {touched.message && errors.message ? (
+                        <p className="flex items-center gap-1.5 text-xs text-rose-500 dark:text-rose-400 font-medium animate-fadeIn">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{errors.message}</span>
+                        </p>
+                      ) : (
+                        <span className="text-[11px] text-slate-400">Minimum 10 characters</span>
+                      )}
+                    </div>
+                    <span
+                      className={`text-[11px] font-mono ${
+                        formData.message.length > 1800
+                          ? "text-rose-500 font-bold"
+                          : formData.message.length > 1500
+                          ? "text-amber-500"
+                          : "text-slate-400"
+                      }`}
+                    >
+                      {formData.message.length} / 2000
+                    </span>
+                  </div>
                 </div>
 
                 {/* Submit Button */}

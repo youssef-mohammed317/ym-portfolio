@@ -35,7 +35,7 @@ export function Skills() {
               className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
                 selectedCategory === index
                   ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/25 scale-[1.02]"
-                  : "bg-white dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60 hover:bg-slate-50 dark:hover:bg-slate-750"
+                  : "bg-white dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-700 dark:hover:text-white"
               }`}
             >
               {cat.category}

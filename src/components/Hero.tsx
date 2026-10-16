@@ -76,7 +76,7 @@ export function Hero({ onOpenResume }: HeroProps) {
 
               <button
                 onClick={onOpenResume}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-850 border border-slate-300 dark:border-slate-800 shadow-sm hover:border-indigo-400 dark:hover:border-indigo-500/50 transition-all hover:-translate-y-0.5 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-900 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white border border-slate-300 dark:border-slate-800 shadow-sm hover:border-indigo-400 dark:hover:border-indigo-500/50 transition-all hover:-translate-y-0.5 cursor-pointer"
               >
                 <Download className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                 <span>Download CV</span>

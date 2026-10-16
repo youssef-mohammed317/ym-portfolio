@@ -11,6 +11,7 @@ import {
   ArrowUpRight,
   Sparkles,
   Layers,
+  X,
 } from "lucide-react";
 import { GithubIcon } from "@/components/Icons";
 
@@ -29,20 +30,68 @@ export function Projects() {
   }, [data.projectCategories, data.projects]);
 
   const filteredProjects = useMemo(() => {
+    const rawQuery = searchQuery.trim().toLowerCase();
+    const cleanQuery = rawQuery.replace(/[^a-z0-9]/g, "");
+
+    const isMatch = (project: ProjectItem) => {
+      if (!rawQuery) return true;
+
+      const titleRaw = project.title.toLowerCase();
+      const titleClean = titleRaw.replace(/[^a-z0-9]/g, "");
+
+      const taglineRaw = (project.tagline || "").toLowerCase();
+      const taglineClean = taglineRaw.replace(/[^a-z0-9]/g, "");
+
+      const descRaw = project.description.toLowerCase();
+      const descClean = descRaw.replace(/[^a-z0-9]/g, "");
+
+      const categoryRaw = project.category.toLowerCase();
+      const categoryClean = categoryRaw.replace(/[^a-z0-9]/g, "");
+
+      const tagsRaw = project.tags.map((t) => t.toLowerCase()).join(" ");
+      const tagsClean = tagsRaw.replace(/[^a-z0-9]/g, "");
+
+      const featuresRaw = (project.keyFeatures || []).join(" ").toLowerCase();
+      const featuresClean = featuresRaw.replace(/[^a-z0-9]/g, "");
+
+      return (
+        titleRaw.includes(rawQuery) ||
+        (cleanQuery && titleClean.includes(cleanQuery)) ||
+        taglineRaw.includes(rawQuery) ||
+        (cleanQuery && taglineClean.includes(cleanQuery)) ||
+        descRaw.includes(rawQuery) ||
+        (cleanQuery && descClean.includes(cleanQuery)) ||
+        categoryRaw.includes(rawQuery) ||
+        (cleanQuery && categoryClean.includes(cleanQuery)) ||
+        tagsRaw.includes(rawQuery) ||
+        (cleanQuery && tagsClean.includes(cleanQuery)) ||
+        featuresRaw.includes(rawQuery) ||
+        (cleanQuery && featuresClean.includes(cleanQuery))
+      );
+    };
+
+    // If a search query is active
+    if (rawQuery) {
+      // If user selected a specific category, first check within that category
+      if (selectedCategory !== "All") {
+        const withinCategory = data.projects.filter(
+          (p) =>
+            p.category.toLowerCase() === selectedCategory.toLowerCase() &&
+            isMatch(p)
+        );
+        // If results exist in the selected category, return them
+        if (withinCategory.length > 0) return withinCategory;
+      }
+      // Otherwise, search across all projects so user never misses a result
+      return data.projects.filter(isMatch);
+    }
+
+    // Default category filtering when not searching
     return data.projects.filter((project) => {
-      const matchesCategory =
+      return (
         selectedCategory === "All" ||
-        project.category.toLowerCase() === selectedCategory.toLowerCase();
-
-      const query = searchQuery.toLowerCase().trim();
-      if (!query) return matchesCategory;
-
-      const matchesSearch =
-        project.title.toLowerCase().includes(query) ||
-        project.description.toLowerCase().includes(query) ||
-        project.tags.some((tag) => tag.toLowerCase().includes(query));
-
-      return matchesCategory && matchesSearch;
+        project.category.toLowerCase() === selectedCategory.toLowerCase()
+      );
     });
   }, [data.projects, selectedCategory, searchQuery]);
 
@@ -64,7 +113,7 @@ export function Projects() {
         </div>
 
         {/* Filter Bar & Search */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
           {/* Category Tabs */}
           <div className="flex flex-wrap items-center gap-2">
             {categories.map((cat) => (
@@ -74,7 +123,7 @@ export function Projects() {
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                   selectedCategory === cat
                     ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/25 scale-[1.02]"
-                    : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60 hover:bg-slate-50 dark:hover:bg-slate-750"
+                    : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-700 dark:hover:text-white"
                 }`}
               >
                 {cat}
@@ -82,37 +131,61 @@ export function Projects() {
             ))}
           </div>
 
-          {/* Search Input */}
-          <div className="relative w-full md:w-72">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          {/* Search Input with Clear Button */}
+          <div className="relative w-full md:w-80">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
             <input
               type="text"
-              placeholder="Search by tech or name..."
+              placeholder="Search by tech, name, or keywords..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full pl-10 pr-9 py-2.5 text-xs sm:text-sm rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm"
             />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 cursor-pointer"
+                title="Clear search"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
           </div>
         </div>
 
+        {/* Search Results Summary Status */}
+        {searchQuery && (
+          <div className="mb-8 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 px-1">
+            <span>
+              Found <strong className="text-indigo-600 dark:text-indigo-400">{filteredProjects.length}</strong> project{filteredProjects.length === 1 ? "" : "s"} matching &ldquo;{searchQuery}&rdquo;
+            </span>
+            <button
+              onClick={() => setSearchQuery("")}
+              className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline cursor-pointer"
+            >
+              Clear search
+            </button>
+          </div>
+        )}
+
         {/* Projects Grid */}
         {filteredProjects.length === 0 ? (
-          <div className="p-12 text-center rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-            <p className="text-slate-500 dark:text-slate-400">
-              No projects match the selected criteria. Try resetting the filters.
+          <div className="p-12 text-center rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 mt-6">
+            <p className="text-slate-500 dark:text-slate-400 text-sm">
+              No projects found matching &ldquo;{searchQuery}&rdquo;. Try another keyword or reset the filter.
             </p>
             <button
               onClick={() => {
                 setSelectedCategory("All");
                 setSearchQuery("");
               }}
-              className="mt-4 px-4 py-2 rounded-xl text-xs font-semibold text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800"
+              className="mt-4 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors cursor-pointer"
             >
-              Reset Filters
+              Reset All Filters
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
             {filteredProjects.map((project) => (
               <div
                 key={project.id}

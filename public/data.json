@@ -1,0 +1,405 @@
+{
+  "siteMetadata": {
+    "title": "Alex Morgan — Senior Full-Stack Engineer & UI Architect",
+    "description": "Portfolio of Alex Morgan, specializing in high-performance web applications with Next.js, React, TypeScript, and modern cloud technologies.",
+    "ogImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80",
+    "keywords": ["Software Engineer", "Next.js", "React", "TypeScript", "Tailwind CSS", "Full-Stack Developer", "Frontend Architect"],
+    "enableLiveEditor": true,
+    "defaultTheme": "dark"
+  },
+  "personal": {
+    "name": "Alex Morgan",
+    "headline": "Senior Full-Stack Engineer & UI Architect",
+    "titles": [
+      "Senior Full-Stack Developer",
+      "Next.js & React Specialist",
+      "UI/UX Craft & Architecture",
+      "Cloud Solutions & Distributed APIs"
+    ],
+    "bio": "I architect and build lightning-fast, high-converting digital products. With 6+ years of engineering experience across fast-scaling tech companies and high-growth startups, I turn complex requirements into clean, maintainable software that users love.",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+    "status": {
+      "available": true,
+      "text": "Available for Select Contracts & Q3/Q4 Projects"
+    },
+    "location": "San Francisco, CA (Open to Worldwide Remote)",
+    "email": "alex.morgan@example.com",
+    "phone": "+1 (555) 432-8900",
+    "resumeUrl": "/resume.pdf"
+  },
+  "socials": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com",
+      "icon": "github"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com",
+      "icon": "linkedin"
+    },
+    {
+      "platform": "twitter",
+      "label": "X (Twitter)",
+      "url": "https://twitter.com",
+      "icon": "twitter"
+    },
+    {
+      "platform": "dribbble",
+      "label": "Dribbble",
+      "url": "https://dribbble.com",
+      "icon": "dribbble"
+    }
+  ],
+  "stats": [
+    {
+      "value": "6+",
+      "label": "Years in Production",
+      "highlight": "Engineering experience"
+    },
+    {
+      "value": "45+",
+      "label": "Projects Delivered",
+      "highlight": "On-time & on-budget"
+    },
+    {
+      "value": "99.8%",
+      "label": "Client Satisfaction",
+      "highlight": "Repeat client rate"
+    },
+    {
+      "value": "100%",
+      "label": "Modern Stack",
+      "highlight": "Next.js & Tailwind"
+    }
+  ],
+  "about": {
+    "story": [
+      "I began my journey crafting bespoke frontend interfaces before expanding into scalable cloud backends, API systems, and performance tuning.",
+      "Over the past six years, I have collaborated with product founders, venture-backed startups, and established enterprises to transform ambiguous concepts into sleek, enterprise-grade software products that scale effortlessly.",
+      "My philosophy centers on three pillars: obsessed user experience, robust clean architecture, and rapid execution without technical debt."
+    ],
+    "quickFacts": [
+      {
+        "label": "Primary Focus",
+        "value": "Full-Stack Web & Next.js"
+      },
+      {
+        "label": "Location",
+        "value": "San Francisco, CA (Remote)"
+      },
+      {
+        "label": "Experience Level",
+        "value": "Senior / Lead (6+ Years)"
+      },
+      {
+        "label": "Spoken Languages",
+        "value": "English (Fluent), Arabic (Native)"
+      },
+      {
+        "label": "Availability",
+        "value": "Freelance & Full-time Roles"
+      },
+      {
+        "label": "Education",
+        "value": "B.S. in Computer Science"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Pixel-Perfect Craftsmanship",
+        "description": "Every margin, transition, and micro-interaction is tuned for maximum delight and accessibility.",
+        "icon": "sparkles"
+      },
+      {
+        "title": "Production-Tested Architecture",
+        "description": "Clean modular code, strict TypeScript typing, and testable components built to stand the test of time.",
+        "icon": "layers"
+      },
+      {
+        "title": "Performance Obsessed",
+        "description": "Sub-second load times, 100/100 Core Web Vitals, and lightweight zero-bloat bundles.",
+        "icon": "zap"
+      },
+      {
+        "title": "Clear Communication",
+        "description": "Transparent milestones, daily updates, proactive problem solving, and zero surprises.",
+        "icon": "message-square"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "category": "Frontend & UI Engineering",
+      "description": "Building interactive, accessible, and ultra-smooth client experiences.",
+      "items": [
+        { "name": "Next.js (App Router)", "level": 96, "badge": "Expert", "icon": "nextjs" },
+        { "name": "React 19 / 18", "level": 98, "badge": "Expert", "icon": "react" },
+        { "name": "TypeScript", "level": 94, "badge": "Expert", "icon": "typescript" },
+        { "name": "Tailwind CSS v4 / v3", "level": 96, "badge": "Expert", "icon": "tailwind" },
+        { "name": "HTML5 / CSS3 / Animations", "level": 95, "badge": "Advanced", "icon": "palette" },
+        { "name": "State Management (Zustand/Redux)", "level": 90, "badge": "Advanced", "icon": "layers" }
+      ]
+    },
+    {
+      "category": "Backend & Cloud Architecture",
+      "description": "Robust distributed servers, high-throughput APIs, and databases.",
+      "items": [
+        { "name": "Node.js & Express", "level": 92, "badge": "Expert", "icon": "server" },
+        { "name": "PostgreSQL & Prisma ORM", "level": 88, "badge": "Advanced", "icon": "database" },
+        { "name": "RESTful & GraphQL APIs", "level": 94, "badge": "Expert", "icon": "network" },
+        { "name": "Supabase & Firebase", "level": 90, "badge": "Advanced", "icon": "cloud" },
+        { "name": "Redis Caching & Queues", "level": 84, "badge": "Proficient", "icon": "cpu" },
+        { "name": "Authentication (NextAuth/OAuth)", "level": 92, "badge": "Advanced", "icon": "shield" }
+      ]
+    },
+    {
+      "category": "DevOps, Tools & Workflow",
+      "description": "Modern tooling for automated CI/CD and reliable deployments.",
+      "items": [
+        { "name": "Git & GitHub Actions", "level": 92, "badge": "Advanced", "icon": "git" },
+        { "name": "Docker & Containers", "level": 85, "badge": "Proficient", "icon": "box" },
+        { "name": "Vercel & AWS Cloud", "level": 90, "badge": "Advanced", "icon": "cloud" },
+        { "name": "Figma to Code Workflow", "level": 95, "badge": "Expert", "icon": "figma" },
+        { "name": "Vitest / Jest / Testing Library", "level": 86, "badge": "Proficient", "icon": "check-circle" },
+        { "name": "Web Performance & SEO", "level": 94, "badge": "Expert", "icon": "trending-up" }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp-1",
+      "role": "Staff Frontend Engineer",
+      "company": "Apex Cloud Systems",
+      "companyUrl": "https://example.com",
+      "period": "2023 - Present",
+      "location": "San Francisco, CA (Remote)",
+      "type": "Full-time",
+      "description": "Directing frontend technical strategy and core design system for an enterprise cloud observability platform with over 150,000 daily active developers.",
+      "achievements": [
+        "Architected Next.js micro-frontends reducing page compilation times by 54%",
+        "Led a team of 8 frontend engineers to launch real-time analytics streaming engine",
+        "Refactored state management reducing client bundle payload by 42%"
+      ],
+      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "WebSockets", "Docker"]
+    },
+    {
+      "id": "exp-2",
+      "role": "Senior Full-Stack Developer",
+      "company": "HyperFlow Studio",
+      "companyUrl": "https://example.com",
+      "period": "2021 - 2023",
+      "location": "New York, NY (Hybrid)",
+      "type": "Full-time",
+      "description": "Engineered customized web applications, SaaS dashboards, and automated client workflows for Fortune 500 brands and high-growth ventures.",
+      "achievements": [
+        "Delivered 14 bespoke SaaS web products with 100% on-time milestone delivery",
+        "Integrated Webhooks, Stripe billing, and automated PDF reporting pipelines",
+        "Instituted automated end-to-end tests increasing release stability to 99.9%"
+      ],
+      "technologies": ["React", "Node.js", "Express", "PostgreSQL", "Tailwind CSS", "Redis"]
+    },
+    {
+      "id": "exp-3",
+      "role": "Frontend Web Developer",
+      "company": "Nova Interactive Agency",
+      "companyUrl": "https://example.com",
+      "period": "2019 - 2021",
+      "location": "Austin, TX",
+      "type": "Full-time",
+      "description": "Collaborated with UI/UX designers to translate Figma design prototypes into fast, responsive, and SEO-optimized web experiences.",
+      "achievements": [
+        "Built over 25 responsive marketing sites and customer portals",
+        "Maintained 95+ Google Lighthouse scores across all client deliveries"
+      ],
+      "technologies": ["JavaScript (ES6+)", "React", "HTML5/SCSS", "REST APIs", "Git"]
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-1",
+      "degree": "B.S. in Computer Science & Software Engineering",
+      "institution": "California State University",
+      "period": "2015 - 2019",
+      "location": "California, USA",
+      "description": "Graduated Magna Cum Laude. Focused on Distributed Systems, Human-Computer Interaction (HCI), and Data Structures.",
+      "highlights": ["Dean's Honor List (4 consecutive years)", "President of ACM Student Chapter", "1st Place Hackathon Winner (2018)"]
+    },
+    {
+      "id": "edu-2",
+      "degree": "AWS Certified Solutions Architect & Professional Frontend Certification",
+      "institution": "Amazon Web Services / Meta",
+      "period": "2022",
+      "location": "Online / Verified Credential",
+      "description": "Comprehensive certification covering scalable cloud systems, serverless architectures, and advanced React design patterns.",
+      "highlights": ["Cloud Architecture", "Next.js Enterprise Scalability", "CI/CD & Security"]
+    }
+  ],
+  "projectCategories": ["All", "Full-Stack", "Frontend", "AI & SaaS", "Mobile / Web"],
+  "projects": [
+    {
+      "id": "nexus-ai-workspace",
+      "title": "Nexus AI — Generative Productivity Suite",
+      "tagline": "Real-time AI collaboration workspace with streaming responses and vector search.",
+      "category": "AI & SaaS",
+      "description": "A collaborative enterprise AI platform combining markdown document drafting, voice input, and multi-model AI agent delegation with instant live streaming.",
+      "fullDescription": "Nexus AI solves the fragmentation between AI chatbots and team documentation. Engineered with Next.js App Router, Tailwind CSS, Vercel AI SDK, and Supabase pgvector. Features include multi-tenant organization workspaces, custom agent system prompting, PDF semantic indexing, and Stripe tiered subscriptions.",
+      "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["Next.js", "React", "TypeScript", "Tailwind CSS", "OpenAI API", "Supabase"],
+      "demoUrl": "https://example.com/demo/nexus-ai",
+      "githubUrl": "https://github.com/example/nexus-ai",
+      "featured": true,
+      "metric": "14,000+ Active Users",
+      "keyFeatures": [
+        "Real-time token streaming with cancelable requests",
+        "Dynamic dark and light high-contrast themes",
+        "Team collaborative comments and document versioning",
+        "Integrated Stripe monthly and annual checkout flows"
+      ]
+    },
+    {
+      "id": "finpulse-dashboard",
+      "title": "FinPulse — Wealth & Crypto Analytics",
+      "tagline": "Real-time financial dashboard with interactive charting and portfolio rebalancing.",
+      "category": "Full-Stack",
+      "description": "High-frequency portfolio tracker and institutional analytics suite with live WebSocket tick prices, multi-currency conversion, and tax loss harvesting tools.",
+      "fullDescription": "FinPulse delivers institutional-grade analytics to independent portfolio managers. Built with a focus on sub-16ms render cycles, custom SVG chart renderers, and zero-latency WebSocket price feeds.",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["Next.js", "TypeScript", "Tailwind CSS", "Chart.js", "WebSockets", "Node.js"],
+      "demoUrl": "https://example.com/demo/finpulse",
+      "githubUrl": "https://github.com/example/finpulse",
+      "featured": true,
+      "metric": "$42M+ Tracked Assets",
+      "keyFeatures": [
+        "Interactive candle, line, and volume canvas charts",
+        "Automated PDF tax and performance reports generation",
+        "Zero-latency multi-exchange WebSocket connection pool",
+        "Responsive layout adapted for mobile and 4K displays"
+      ]
+    },
+    {
+      "id": "lumina-design-system",
+      "title": "Lumina — Modern Component Library",
+      "tagline": "Accessible, open-source Tailwind CSS & React component library.",
+      "category": "Frontend",
+      "description": "An open-source design system comprising 60+ accessible, fully composable UI components with built-in dark mode and keyboard navigation.",
+      "fullDescription": "Lumina helps developers launch aesthetic products faster. Written in pure TypeScript with Tailwind CSS and Radix primitives, Lumina achieves 100% WCAG 2.1 AA accessibility compliance and zero runtime CSS bloat.",
+      "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["React", "TypeScript", "Tailwind CSS", "Radix UI", "NPM Package"],
+      "demoUrl": "https://example.com/demo/lumina",
+      "githubUrl": "https://github.com/example/lumina",
+      "featured": true,
+      "metric": "850+ GitHub Stars",
+      "keyFeatures": [
+        "60+ production-ready copy-paste components",
+        "WAI-ARIA compliant keyboard focus states",
+        "Full support for Tailwind CSS v4 and CSS variables",
+        "Interactive Storybook documentation and playground"
+      ]
+    },
+    {
+      "id": "orbit-ecommerce-engine",
+      "title": "Orbit — Headless E-Commerce Platform",
+      "tagline": "Lightning-fast shopping experience with Next.js and Shopify Storefront API.",
+      "category": "Full-Stack",
+      "description": "A high-conversion headless storefront with instant optimistic cart updates, Algolia instant search, and localized international currencies.",
+      "fullDescription": "Built to tackle slow loading times on traditional store platforms. Orbit achieves sub-300ms page transitions, reducing checkout abandonment by 28% for international retail brands.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["Next.js", "Shopify API", "Tailwind CSS", "Zustand", "Algolia"],
+      "demoUrl": "https://example.com/demo/orbit",
+      "githubUrl": "https://github.com/example/orbit-store",
+      "featured": false,
+      "metric": "2.4x Conversion Increase",
+      "keyFeatures": [
+        "Optimistic cart drawer with instant quantity calculations",
+        "Algolia instant multi-filter search with autocomplete",
+        "Multi-currency geolocation pricing selector",
+        "Lighthouse performance score of 99/100"
+      ]
+    },
+    {
+      "id": "zenith-task-manager",
+      "title": "Zenith — Kanban & Project Workspace",
+      "tagline": "Minimalist, keyboard-first task manager for remote agile teams.",
+      "category": "Frontend",
+      "description": "Smooth drag-and-drop workflow system with offline persistence, markdown checklists, and keyboard shortcuts.",
+      "fullDescription": "Zenith eliminates project management clutter. Crafted with React, Tailwind CSS, and HTML5 drag-and-drop APIs, it allows product teams to organize sprints without touching the mouse.",
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["React", "TypeScript", "Tailwind CSS", "IndexedDB", "Vite"],
+      "demoUrl": "https://example.com/demo/zenith",
+      "githubUrl": "https://github.com/example/zenith",
+      "featured": false,
+      "metric": "4.9/5 Rating",
+      "keyFeatures": [
+        "Fluid drag-and-drop cards with smooth animations",
+        "Full offline support via IndexedDB synchronization",
+        "Vim-inspired keyboard navigation and shortcuts",
+        "Exportable boards to CSV, JSON, and Markdown"
+      ]
+    },
+    {
+      "id": "pulse-health-tracker",
+      "title": "Pulse — Mobile-First Wellness Web App",
+      "tagline": "Health metrics tracking and habits journal for modern wellness seekers.",
+      "category": "Mobile / Web",
+      "description": "Progressive Web App featuring biometric analytics, streak calculations, and water/sleep reminders.",
+      "fullDescription": "Pulse combines health telemetry with habit gamification. Designed mobile-first with responsive touch gestures, haptic feedback hooks, and push notifications.",
+      "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["Next.js", "PWA", "Tailwind CSS", "TypeScript", "Chart.js"],
+      "demoUrl": "https://example.com/demo/pulse",
+      "githubUrl": "https://github.com/example/pulse-health",
+      "featured": false,
+      "metric": "8,500+ Daily Streaks",
+      "keyFeatures": [
+        "Installable PWA with offline caching",
+        "Interactive streak calendar and milestone badges",
+        "Encrypted local health data storage",
+        "Smooth micro-animations using pure Tailwind CSS"
+      ]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "test-1",
+      "name": "Marcus Vance",
+      "role": "CTO & Co-Founder",
+      "company": "Verve Technologies",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      "content": "Alex delivered our Next.js customer portal 3 weeks before our deadline. The design is breathtaking, the code is meticulously organized, and our users frequently compliment the speed.",
+      "rating": 5
+    },
+    {
+      "id": "test-2",
+      "name": "Elena Rostova",
+      "role": "Head of Design",
+      "company": "Prism Studio",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+      "content": "Finding an engineer who truly respects design details is rare. Alex translated our Figma design down to the exact pixel and spacing, then elevated it with smooth, tasteful animations.",
+      "rating": 5
+    },
+    {
+      "id": "test-3",
+      "name": "Tariq Al-Mansoor",
+      "role": "Founder & Managing Director",
+      "company": "Nova Ventures",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+      "content": "The best investment we made for our SaaS MVP. Alex is extremely transparent, writes clean TypeScript, and helped us avoid costly architectural mistakes early on. 10/10 recommendation!",
+      "rating": 5
+    }
+  ],
+  "contact": {
+    "headline": "Let's Build Something Exceptional Together",
+    "description": "Have a project in mind, an engineering opening on your team, or want to discuss a potential collaboration? Send a message below and I will get back to you within 24 hours.",
+    "email": "alex.morgan@example.com",
+    "phone": "+1 (555) 432-8900",
+    "location": "San Francisco, CA (Open to Worldwide Remote)",
+    "calendlyUrl": "https://calendly.com",
+    "web3FormsAccessKey": "YOUR_WEB3FORMS_ACCESS_KEY_HERE",
+    "formspreeEndpoint": "",
+    "successMessage": "Thank you! Your message has been sent successfully. I will get in touch with you shortly.",
+    "workingHours": "Mon - Fri, 9:00 AM - 6:00 PM (PST)",
+    "availabilityBadge": "Currently accepting new client projects"
+  }
+}

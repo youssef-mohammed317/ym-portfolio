@@ -110,18 +110,24 @@ export function Hero({ onOpenResume }: HeroProps) {
               {/* Decorative Gradient Halo */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-indigo-600 to-cyan-400 rotate-6 scale-105 opacity-60 blur-lg animate-pulse" />
 
-              {/* Photo Frame */}
-              <div className="relative w-full h-full rounded-3xl overflow-hidden border-2 border-slate-200/80 dark:border-slate-800/80 shadow-2xl bg-slate-100 dark:bg-slate-900">
+              {/* Photo Frame (Linked to GitHub) */}
+              <a
+                href={data.socials.find((s) => s.platform === "github")?.url || "https://github.com/Youssef-Mohammed317"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/photo block relative w-full h-full rounded-3xl overflow-hidden border-2 border-slate-200/80 dark:border-slate-800/80 shadow-2xl bg-slate-100 dark:bg-slate-900 cursor-pointer"
+                title="View Youssef's GitHub Profile"
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={data.personal.avatar}
                   alt={data.personal.name}
-                  className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/photo:scale-105"
                 />
 
                 {/* Subtle Inner Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-40 pointer-events-none" />
-              </div>
+              </a>
 
               {/* Floating Badges */}
               <div className="absolute -top-4 -left-4 px-3.5 py-2 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 backdrop-blur-md shadow-lg flex items-center gap-2">

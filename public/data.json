@@ -2,7 +2,7 @@
   "siteMetadata": {
     "title": "Youssef Mohamed Abd El-Fattah — .NET Backend Engineer & DevOps Practitioner",
     "description": "Portfolio of Youssef Mohamed Abd El-Fattah, specializing in scalable .NET microservices, Clean Architecture, CQRS, Docker, Kubernetes, and cloud-native solutions.",
-    "ogImage": "/avatar.jpg",
+    "ogImage": "https://github.com/Youssef-Mohammed317.png",
     "keywords": [
       ".NET Backend Developer",
       "ASP.NET Core",
@@ -28,7 +28,7 @@
       "DevOps & Cloud-Native Practitioner (DEPI)"
     ],
     "bio": ".NET Backend Developer specializing in building scalable RESTful APIs with ASP.NET Core and distributed .NET microservices. Experienced in Clean Architecture, CQRS, and design patterns, with strong testing practices using xUnit and Moq. Passionate about DevOps, Docker, Kubernetes, and automated CI/CD pipelines.",
-    "avatar": "/avatar.jpg",
+    "avatar": "https://github.com/Youssef-Mohammed317.png",
     "status": {
       "available": true,
       "text": "Open for Full-time Roles & High-Impact Engineering Opportunities"

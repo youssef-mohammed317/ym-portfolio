@@ -24,11 +24,14 @@ export function Footer() {
           {/* Logo & Name */}
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-400 p-[1.5px]">
-              <div className="w-full h-full bg-white dark:bg-slate-950 rounded-[10px] flex items-center justify-center font-bold text-indigo-600 text-sm">
+              <div className="w-full h-full bg-white dark:bg-slate-950 rounded-[10px] flex items-center justify-center font-bold text-indigo-600 text-sm tracking-wider">
                 {data.personal.name
                   .split(" ")
+                  .filter(Boolean)
+                  .slice(0, 2)
                   .map((n) => n[0])
-                  .join("")}
+                  .join("")
+                  .toUpperCase()}
               </div>
             </div>
             <div>

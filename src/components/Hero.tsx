@@ -116,7 +116,7 @@ export function Hero({ onOpenResume }: HeroProps) {
                 <img
                   src={data.personal.avatar}
                   alt={data.personal.name}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
                 />
 
                 {/* Subtle Inner Gradient Overlay */}

@@ -66,11 +66,14 @@ export function Navbar({ onOpenResume }: NavbarProps) {
           >
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 p-[1.5px] shadow-md shadow-indigo-500/20">
               <div className="w-full h-full bg-white dark:bg-slate-950 rounded-[10px] flex items-center justify-center">
-                <span className="font-bold text-transparent bg-clip-text bg-gradient-to-tr from-indigo-600 to-cyan-500 text-lg">
+                <span className="font-bold text-transparent bg-clip-text bg-gradient-to-tr from-indigo-600 to-cyan-500 text-lg tracking-wider">
                   {data.personal.name
                     .split(" ")
+                    .filter(Boolean)
+                    .slice(0, 2)
                     .map((n) => n[0])
-                    .join("")}
+                    .join("")
+                    .toUpperCase()}
                 </span>
               </div>
             </div>

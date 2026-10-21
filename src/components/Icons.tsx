@@ -133,6 +133,14 @@ export function FigmaIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
+export function CodewarsIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.012 0c-.57 0-1.11.23-1.51.64L1.768 9.38a2.14 2.14 0 0 0 0 3.03l8.734 8.74c.4.41.94.64 1.51.64.57 0 1.11-.23 1.51-.64l8.734-8.74a2.14 2.14 0 0 0 0-3.03L13.522.64A2.12 2.12 0 0 0 12.012 0zm0 4.19l6.39 6.39-6.39 6.39-6.39-6.39 6.39-6.39z" />
+    </svg>
+  );
+}
+
 export function Icon({ name, className = "w-5 h-5", size }: IconProps) {
   const cleanName = name?.toLowerCase().trim() || "";
 
@@ -142,6 +150,7 @@ export function Icon({ name, className = "w-5 h-5", size }: IconProps) {
   if (cleanName === "twitter" || cleanName === "x") return <TwitterIcon className={className} />;
   if (cleanName === "dribbble") return <DribbbleIcon className={className} />;
   if (cleanName === "figma") return <FigmaIcon className={className} />;
+  if (cleanName === "codewars") return <CodewarsIcon className={className} />;
 
   // Lucide icon components
   const iconMap: Record<string, React.ComponentType<{ className?: string; size?: number }>> = {

@@ -1,405 +1,437 @@
 {
   "siteMetadata": {
-    "title": "Alex Morgan — Senior Full-Stack Engineer & UI Architect",
-    "description": "Portfolio of Alex Morgan, specializing in high-performance web applications with Next.js, React, TypeScript, and modern cloud technologies.",
-    "ogImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80",
-    "keywords": ["Software Engineer", "Next.js", "React", "TypeScript", "Tailwind CSS", "Full-Stack Developer", "Frontend Architect"],
+    "title": "Youssef Mohamed Abd El-Fattah — .NET Backend Engineer & DevOps Practitioner",
+    "description": "Portfolio of Youssef Mohamed Abd El-Fattah, specializing in scalable .NET microservices, Clean Architecture, CQRS, Docker, Kubernetes, and cloud-native solutions.",
+    "ogImage": "https://github.com/Youssef-Mohammed317.png",
+    "keywords": [
+      ".NET Backend Developer",
+      "ASP.NET Core",
+      "Microservices",
+      "Clean Architecture",
+      "DevOps",
+      "Docker",
+      "Kubernetes",
+      "CQRS",
+      "Benha University",
+      "DEPI"
+    ],
     "enableLiveEditor": true,
     "defaultTheme": "dark"
   },
   "personal": {
-    "name": "Alex Morgan",
-    "headline": "Senior Full-Stack Engineer & UI Architect",
+    "name": "Youssef Mohamed Abd El-Fattah",
+    "headline": ".NET Backend Engineer & DevOps Practitioner",
     "titles": [
-      "Senior Full-Stack Developer",
-      "Next.js & React Specialist",
-      "UI/UX Craft & Architecture",
-      "Cloud Solutions & Distributed APIs"
+      ".NET Backend Engineer",
+      "ASP.NET Core & Microservices Architect",
+      "Clean Architecture & CQRS Specialist",
+      "DevOps & Cloud-Native Practitioner (DEPI)"
     ],
-    "bio": "I architect and build lightning-fast, high-converting digital products. With 6+ years of engineering experience across fast-scaling tech companies and high-growth startups, I turn complex requirements into clean, maintainable software that users love.",
-    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+    "bio": ".NET Backend Developer specializing in building scalable RESTful APIs with ASP.NET Core and distributed .NET microservices. Experienced in Clean Architecture, CQRS, and design patterns, with strong testing practices using xUnit and Moq. Passionate about DevOps, Docker, Kubernetes, and automated CI/CD pipelines.",
+    "avatar": "https://github.com/Youssef-Mohammed317.png",
     "status": {
       "available": true,
-      "text": "Available for Select Contracts & Q3/Q4 Projects"
+      "text": "Open for Full-time Roles & High-Impact Engineering Opportunities"
     },
-    "location": "San Francisco, CA (Open to Worldwide Remote)",
-    "email": "alex.morgan@example.com",
-    "phone": "+1 (555) 432-8900",
+    "location": "Cairo, Egypt (Open to Remote Worldwide)",
+    "email": "youssefmohammad040317@gmail.com",
+    "phone": "+20 1500177961",
     "resumeUrl": "/resume.pdf"
   },
   "socials": [
     {
       "platform": "github",
       "label": "GitHub",
-      "url": "https://github.com",
+      "url": "https://github.com/Youssef-Mohammed317",
       "icon": "github"
     },
     {
       "platform": "linkedin",
       "label": "LinkedIn",
-      "url": "https://linkedin.com",
+      "url": "https://www.linkedin.com/in/youssefmohammed317/",
       "icon": "linkedin"
     },
     {
-      "platform": "twitter",
-      "label": "X (Twitter)",
-      "url": "https://twitter.com",
-      "icon": "twitter"
+      "platform": "codewars",
+      "label": "Codewars (250+ Katas)",
+      "url": "https://www.codewars.com/users/youssef-mohammed317",
+      "icon": "codewars"
     },
     {
-      "platform": "dribbble",
-      "label": "Dribbble",
-      "url": "https://dribbble.com",
-      "icon": "dribbble"
+      "platform": "mail",
+      "label": "Direct Email",
+      "url": "mailto:youssefmohammad040317@gmail.com",
+      "icon": "mail"
     }
   ],
   "stats": [
     {
-      "value": "6+",
-      "label": "Years in Production",
-      "highlight": "Engineering experience"
+      "value": "250+",
+      "label": "Codewars Katas",
+      "highlight": "Algorithmic problem solving"
     },
     {
-      "value": "45+",
-      "label": "Projects Delivered",
-      "highlight": "On-time & on-budget"
+      "value": "15+",
+      "label": "Production & Microservices Repos",
+      "highlight": "Enterprise .NET systems"
     },
     {
-      "value": "99.8%",
-      "label": "Client Satisfaction",
-      "highlight": "Repeat client rate"
+      "value": "92%",
+      "label": "Academic Excellence",
+      "highlight": "Computer Engineering (Benha University)"
     },
     {
       "value": "100%",
-      "label": "Modern Stack",
-      "highlight": "Next.js & Tailwind"
+      "label": "Clean Architecture",
+      "highlight": "Production-grade standards"
     }
   ],
   "about": {
     "story": [
-      "I began my journey crafting bespoke frontend interfaces before expanding into scalable cloud backends, API systems, and performance tuning.",
-      "Over the past six years, I have collaborated with product founders, venture-backed startups, and established enterprises to transform ambiguous concepts into sleek, enterprise-grade software products that scale effortlessly.",
-      "My philosophy centers on three pillars: obsessed user experience, robust clean architecture, and rapid execution without technical debt."
+      "I am a .NET Backend Engineer and DevOps practitioner studying Computer Engineering at Benha University (Class of 2027) with an Excellent grade (92%).",
+      "My engineering journey is driven by designing resilient, scalable backend ecosystems. I architect and deliver complex distributed systems—ranging from high-performance Modular Monoliths with MediatR and Transactional Outbox, to polyglot microservices systems with YARP/Ocelot API gateways, RabbitMQ event-driven messaging, and Kubernetes orchestration.",
+      "Through intensive hands-on programs at the Digital Egypt Pioneers Initiative (DEPI), the Information Technology Institute (ITI), and Route Academy, I bridge the gap between software development and cloud operations with automated CI/CD pipelines, containerization, and infrastructure as code."
     ],
     "quickFacts": [
       {
         "label": "Primary Focus",
-        "value": "Full-Stack Web & Next.js"
+        "value": ".NET Backend, Microservices & DevOps"
       },
       {
         "label": "Location",
-        "value": "San Francisco, CA (Remote)"
+        "value": "Cairo, Egypt (Remote / Relocation)"
       },
       {
-        "label": "Experience Level",
-        "value": "Senior / Lead (6+ Years)"
+        "label": "University",
+        "value": "Faculty of Engineering, Benha University"
+      },
+      {
+        "label": "Academic Standing",
+        "value": "Computer Engineering (Grade: 92% Excellent)"
+      },
+      {
+        "label": "Problem Solving",
+        "value": "250+ Solved Katas on Codewars"
       },
       {
         "label": "Spoken Languages",
-        "value": "English (Fluent), Arabic (Native)"
-      },
-      {
-        "label": "Availability",
-        "value": "Freelance & Full-time Roles"
-      },
-      {
-        "label": "Education",
-        "value": "B.S. in Computer Science"
+        "value": "Arabic (Native), English (Proficient)"
       }
     ],
     "highlights": [
       {
-        "title": "Pixel-Perfect Craftsmanship",
-        "description": "Every margin, transition, and micro-interaction is tuned for maximum delight and accessibility.",
-        "icon": "sparkles"
-      },
-      {
-        "title": "Production-Tested Architecture",
-        "description": "Clean modular code, strict TypeScript typing, and testable components built to stand the test of time.",
+        "title": "Clean & Vertical Slice Architecture",
+        "description": "Strict domain-driven design (DDD), CQRS, MediatR, and comprehensive test-driven practices.",
         "icon": "layers"
       },
       {
-        "title": "Performance Obsessed",
-        "description": "Sub-second load times, 100/100 Core Web Vitals, and lightweight zero-bloat bundles.",
-        "icon": "zap"
+        "title": "Scalable Distributed Microservices",
+        "description": "Event-driven asynchronous messaging with RabbitMQ, gRPC synchronous calls, and YARP API Gateways.",
+        "icon": "network"
       },
       {
-        "title": "Clear Communication",
-        "description": "Transparent milestones, daily updates, proactive problem solving, and zero surprises.",
-        "icon": "message-square"
+        "title": "DevOps & Cloud Automation",
+        "description": "Docker containerization, Kubernetes (AKS/Minikube) deployments, and automated GitHub Actions CI/CD.",
+        "icon": "cloud"
+      },
+      {
+        "title": "Polyglot Persistence & Caching",
+        "description": "SQL Server, PostgreSQL, MongoDB, Redis distributed caching, and Marten document storage.",
+        "icon": "database"
       }
     ]
   },
   "skills": [
     {
-      "category": "Frontend & UI Engineering",
-      "description": "Building interactive, accessible, and ultra-smooth client experiences.",
+      "category": ".NET Backend & Distributed Systems",
+      "description": "Building high-throughput, resilient, and enterprise-grade backend APIs.",
       "items": [
-        { "name": "Next.js (App Router)", "level": 96, "badge": "Expert", "icon": "nextjs" },
-        { "name": "React 19 / 18", "level": 98, "badge": "Expert", "icon": "react" },
-        { "name": "TypeScript", "level": 94, "badge": "Expert", "icon": "typescript" },
-        { "name": "Tailwind CSS v4 / v3", "level": 96, "badge": "Expert", "icon": "tailwind" },
-        { "name": "HTML5 / CSS3 / Animations", "level": 95, "badge": "Advanced", "icon": "palette" },
-        { "name": "State Management (Zustand/Redux)", "level": 90, "badge": "Advanced", "icon": "layers" }
+        { "name": "ASP.NET Core (MVC & Web API)", "level": 96, "badge": "Expert", "icon": "server" },
+        { "name": ".NET Microservices & Modular Monoliths", "level": 94, "badge": "Expert", "icon": "network" },
+        { "name": "Clean Architecture, Onion & DDD", "level": 95, "badge": "Expert", "icon": "layers" },
+        { "name": "Entity Framework Core & Dapper", "level": 92, "badge": "Advanced", "icon": "database" },
+        { "name": "CQRS (MediatR) & Outbox Pattern", "level": 92, "badge": "Advanced", "icon": "zap" },
+        { "name": "RESTful APIs & gRPC Protocols", "level": 90, "badge": "Advanced", "icon": "code" }
       ]
     },
     {
-      "category": "Backend & Cloud Architecture",
-      "description": "Robust distributed servers, high-throughput APIs, and databases.",
+      "category": "Databases, Caching & Message Brokers",
+      "description": "Scalable data stores, distributed caching, and event-driven messaging.",
       "items": [
-        { "name": "Node.js & Express", "level": 92, "badge": "Expert", "icon": "server" },
-        { "name": "PostgreSQL & Prisma ORM", "level": 88, "badge": "Advanced", "icon": "database" },
-        { "name": "RESTful & GraphQL APIs", "level": 94, "badge": "Expert", "icon": "network" },
-        { "name": "Supabase & Firebase", "level": 90, "badge": "Advanced", "icon": "cloud" },
-        { "name": "Redis Caching & Queues", "level": 84, "badge": "Proficient", "icon": "cpu" },
-        { "name": "Authentication (NextAuth/OAuth)", "level": 92, "badge": "Advanced", "icon": "shield" }
+        { "name": "SQL Server & PostgreSQL", "level": 94, "badge": "Expert", "icon": "database" },
+        { "name": "Redis Distributed Caching", "level": 88, "badge": "Advanced", "icon": "cpu" },
+        { "name": "RabbitMQ & MassTransit", "level": 88, "badge": "Advanced", "icon": "network" },
+        { "name": "YARP & Ocelot API Gateways", "level": 86, "badge": "Advanced", "icon": "shield" },
+        { "name": "MongoDB & Marten Document DB", "level": 84, "badge": "Proficient", "icon": "database" },
+        { "name": "JWT Authentication & Identity", "level": 92, "badge": "Expert", "icon": "shield" }
       ]
     },
     {
-      "category": "DevOps, Tools & Workflow",
-      "description": "Modern tooling for automated CI/CD and reliable deployments.",
+      "category": "DevOps, Cloud & Quality Assurance",
+      "description": "Automated deployment pipelines, container orchestration, and automated testing.",
       "items": [
-        { "name": "Git & GitHub Actions", "level": 92, "badge": "Advanced", "icon": "git" },
-        { "name": "Docker & Containers", "level": 85, "badge": "Proficient", "icon": "box" },
-        { "name": "Vercel & AWS Cloud", "level": 90, "badge": "Advanced", "icon": "cloud" },
-        { "name": "Figma to Code Workflow", "level": 95, "badge": "Expert", "icon": "figma" },
-        { "name": "Vitest / Jest / Testing Library", "level": 86, "badge": "Proficient", "icon": "check-circle" },
-        { "name": "Web Performance & SEO", "level": 94, "badge": "Expert", "icon": "trending-up" }
+        { "name": "Docker & Containerization", "level": 92, "badge": "Expert", "icon": "box" },
+        { "name": "Kubernetes (AKS & Minikube)", "level": 86, "badge": "Advanced", "icon": "cloud" },
+        { "name": "GitHub Actions CI/CD", "level": 90, "badge": "Advanced", "icon": "git" },
+        { "name": "xUnit, Moq & AutoFixture", "level": 92, "badge": "Expert", "icon": "check-circle" },
+        { "name": "Linux (RHEL), Bash & Nginx", "level": 88, "badge": "Advanced", "icon": "terminal" },
+        { "name": "Terraform, Ansible & AWS Cloud", "level": 82, "badge": "Proficient", "icon": "cloud" }
       ]
     }
   ],
   "experience": [
     {
       "id": "exp-1",
-      "role": "Staff Frontend Engineer",
-      "company": "Apex Cloud Systems",
-      "companyUrl": "https://example.com",
-      "period": "2023 - Present",
-      "location": "San Francisco, CA (Remote)",
-      "type": "Full-time",
-      "description": "Directing frontend technical strategy and core design system for an enterprise cloud observability platform with over 150,000 daily active developers.",
+      "role": "DevOps Intern",
+      "company": "Digital Egypt Pioneers Initiative (DEPI)",
+      "companyUrl": "https://depi.gov.eg/",
+      "period": "Jul 2026 - Present",
+      "location": "Cairo, Egypt (Hybrid)",
+      "type": "Internship",
+      "description": "Leveraged DevOps practices to bridge the gap between development and operations, enhancing backend application deployment, scalability, and cloud-native architecture.",
       "achievements": [
-        "Architected Next.js micro-frontends reducing page compilation times by 54%",
-        "Led a team of 8 frontend engineers to launch real-time analytics streaming engine",
-        "Refactored state management reducing client bundle payload by 42%"
+        "Acquired hands-on experience building automated CI/CD pipelines with GitHub Actions and containerization via Docker.",
+        "Deployed and managed Kubernetes clusters, automating microservices provisioning and service discovery.",
+        "Automated server setup and infrastructure using Linux (RHEL), Bash scripting, Nginx reverse proxy, and Terraform."
       ],
-      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "WebSockets", "Docker"]
+      "technologies": ["Linux (RHEL)", "Docker", "Kubernetes", "GitHub Actions", "Nginx", "Bash", "Terraform", "Ansible", "AWS"]
     },
     {
       "id": "exp-2",
-      "role": "Senior Full-Stack Developer",
-      "company": "HyperFlow Studio",
-      "companyUrl": "https://example.com",
-      "period": "2021 - 2023",
-      "location": "New York, NY (Hybrid)",
-      "type": "Full-time",
-      "description": "Engineered customized web applications, SaaS dashboards, and automated client workflows for Fortune 500 brands and high-growth ventures.",
+      "role": "Web Development using .NET",
+      "company": "Information Technology Institute (ITI)",
+      "companyUrl": "https://iti.gov.eg/",
+      "period": "Jul 2026 - Aug 2026",
+      "location": "Cairo, Egypt",
+      "type": "Trainee",
+      "description": "Built a solid foundation in enterprise web development, mastering C# programming, object-oriented principles, and relational database design.",
       "achievements": [
-        "Delivered 14 bespoke SaaS web products with 100% on-time milestone delivery",
-        "Integrated Webhooks, Stripe billing, and automated PDF reporting pipelines",
-        "Instituted automated end-to-end tests increasing release stability to 99.9%"
+        "Architected and integrated a full-stack web project utilizing ASP.NET Core for backend logic with SQL Server.",
+        "Implemented relational schemas, optimized LINQ queries, and integrated responsive frontend views."
       ],
-      "technologies": ["React", "Node.js", "Express", "PostgreSQL", "Tailwind CSS", "Redis"]
+      "technologies": ["C#", "ASP.NET Core", "SQL Server", "OOP", "Entity Framework", "REST APIs"]
     },
     {
       "id": "exp-3",
-      "role": "Frontend Web Developer",
-      "company": "Nova Interactive Agency",
-      "companyUrl": "https://example.com",
-      "period": "2019 - 2021",
-      "location": "Austin, TX",
-      "type": "Full-time",
-      "description": "Collaborated with UI/UX designers to translate Figma design prototypes into fast, responsive, and SEO-optimized web experiences.",
+      "role": "Backend (.NET Core) Diploma",
+      "company": "Route Academy",
+      "companyUrl": "https://routeacademy.com/",
+      "period": "Apr 2025 - Dec 2025",
+      "location": "Cairo, Egypt",
+      "type": "Diploma",
+      "description": "Built two enterprise applications: an ASP.NET Core MVC web portal and a RESTful API, both adhering to Clean Architecture principles.",
       "achievements": [
-        "Built over 25 responsive marketing sites and customer portals",
-        "Maintained 95+ Google Lighthouse scores across all client deliveries"
+        "Practiced Database-First and Code-First paradigms with SQL Server and implemented Redis caching to optimize API response times.",
+        "Applied FluentValidation for input validation and secure data handling across all application layers.",
+        "Integrated JWT token-based authentication and role-based authorization."
       ],
-      "technologies": ["JavaScript (ES6+)", "React", "HTML5/SCSS", "REST APIs", "Git"]
+      "technologies": [".NET Core", "Clean Architecture", "Redis", "FluentValidation", "SQL Server", "JWT"]
     }
   ],
   "education": [
     {
       "id": "edu-1",
-      "degree": "B.S. in Computer Science & Software Engineering",
-      "institution": "California State University",
-      "period": "2015 - 2019",
-      "location": "California, USA",
-      "description": "Graduated Magna Cum Laude. Focused on Distributed Systems, Human-Computer Interaction (HCI), and Data Structures.",
-      "highlights": ["Dean's Honor List (4 consecutive years)", "President of ACM Student Chapter", "1st Place Hackathon Winner (2018)"]
+      "degree": "B.S. in Computer Engineering",
+      "institution": "Faculty of Engineering, Benha University",
+      "period": "2022 - 2027",
+      "location": "Benha / Cairo, Egypt",
+      "description": "Studying Computer Engineering with an Excellent grade (92%). Core focus on Algorithms, Data Structures, Distributed Systems, Operating Systems, and Software Architecture.",
+      "highlights": [
+        "Academic Standing: Grade Excellent (92%)",
+        "250+ algorithmic katas solved on Codewars (7-8 kyu)",
+        "Active participant in technical student engineering initiatives"
+      ]
     },
     {
       "id": "edu-2",
-      "degree": "AWS Certified Solutions Architect & Professional Frontend Certification",
-      "institution": "Amazon Web Services / Meta",
-      "period": "2022",
-      "location": "Online / Verified Credential",
-      "description": "Comprehensive certification covering scalable cloud systems, serverless architectures, and advanced React design patterns.",
-      "highlights": ["Cloud Architecture", "Next.js Enterprise Scalability", "CI/CD & Security"]
+      "degree": "DEPI DevOps & Cloud Engineering Track",
+      "institution": "Ministry of Communications and Information Technology (MCIT)",
+      "period": "2026",
+      "location": "Cairo, Egypt",
+      "description": "Specialized national scholarship program preparing elite engineers in cloud-native infrastructure, container orchestration, and automated delivery.",
+      "highlights": [
+        "Hands-on Kubernetes, Docker, and Linux RHEL administration",
+        "Automated CI/CD pipelines using GitHub Actions",
+        "Infrastructure as Code with Terraform & Ansible"
+      ]
+    },
+    {
+      "id": "edu-3",
+      "degree": "Backend (.NET Core) Diploma",
+      "institution": "Route IT Training Center",
+      "period": "2025",
+      "location": "Cairo, Egypt",
+      "description": "Comprehensive enterprise diploma covering ASP.NET Core, Clean Architecture, CQRS, and enterprise design patterns.",
+      "highlights": [
+        "Clean Architecture & Onion Architecture",
+        "Redis distributed caching & SQL Server optimization",
+        "RESTful Web APIs and JWT Security"
+      ]
     }
   ],
-  "projectCategories": ["All", "Full-Stack", "Frontend", "AI & SaaS", "Mobile / Web"],
+  "projectCategories": ["All", "Microservices", "Clean Architecture", "DevOps & Cloud", "Enterprise APIs"],
   "projects": [
     {
-      "id": "nexus-ai-workspace",
-      "title": "Nexus AI — Generative Productivity Suite",
-      "tagline": "Real-time AI collaboration workspace with streaming responses and vector search.",
-      "category": "AI & SaaS",
-      "description": "A collaborative enterprise AI platform combining markdown document drafting, voice input, and multi-model AI agent delegation with instant live streaming.",
-      "fullDescription": "Nexus AI solves the fragmentation between AI chatbots and team documentation. Engineered with Next.js App Router, Tailwind CSS, Vercel AI SDK, and Supabase pgvector. Features include multi-tenant organization workspaces, custom agent system prompting, PDF semantic indexing, and Stripe tiered subscriptions.",
-      "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
-      "tags": ["Next.js", "React", "TypeScript", "Tailwind CSS", "OpenAI API", "Supabase"],
-      "demoUrl": "https://example.com/demo/nexus-ai",
-      "githubUrl": "https://github.com/example/nexus-ai",
+      "id": "eshop-modulith",
+      "title": "eshop-modulith — Modular Monolith eCommerce",
+      "tagline": "Modular Monolith eCommerce engine with in-process MediatR & Transactional Outbox.",
+      "category": "Microservices",
+      "description": "Engineered eshop-modulith as an isolated modular monolith containing Catalog, Basket, and Ordering modules sharing a single PostgreSQL instance with per-module schemas.",
+      "fullDescription": "Built the eCommerce domain as an isolated modular monolith to learn direct architectural trade-offs against microservices. Modules communicate in-process via MediatR and leverage the Transactional Outbox pattern to reliably publish cross-module domain events without distributed transaction overhead.",
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+      "tags": [".NET 8", "Modular Monolith", "DDD", "CQRS", "MediatR", "PostgreSQL", "Outbox Pattern"],
+      "demoUrl": "https://drive.google.com/file/d/1_wAItBOD8Gtzo6XbzFUMALi6R6WR1smX/view?usp=drive_link",
+      "githubUrl": "https://github.com/youssef-mohammed317/eshop-modulith",
       "featured": true,
-      "metric": "14,000+ Active Users",
+      "metric": "Transactional Outbox & MediatR",
       "keyFeatures": [
-        "Real-time token streaming with cancelable requests",
-        "Dynamic dark and light high-contrast themes",
-        "Team collaborative comments and document versioning",
-        "Integrated Stripe monthly and annual checkout flows"
+        "Isolated modules (Catalog, Basket, Ordering) with per-module PostgreSQL schemas",
+        "In-process asynchronous messaging using MediatR",
+        "Transactional Outbox pattern ensuring 100% reliable domain event delivery",
+        "Clean Domain-Driven Design (DDD) with rich aggregate roots"
       ]
     },
     {
-      "id": "finpulse-dashboard",
-      "title": "FinPulse — Wealth & Crypto Analytics",
-      "tagline": "Real-time financial dashboard with interactive charting and portfolio rebalancing.",
-      "category": "Full-Stack",
-      "description": "High-frequency portfolio tracker and institutional analytics suite with live WebSocket tick prices, multi-currency conversion, and tax loss harvesting tools.",
-      "fullDescription": "FinPulse delivers institutional-grade analytics to independent portfolio managers. Built with a focus on sub-16ms render cycles, custom SVG chart renderers, and zero-latency WebSocket price feeds.",
+      "id": "eshop-microservices",
+      "title": "eshop-microservices — Distributed Event-Driven Architecture",
+      "tagline": "4 independently deployable services behind YARP API Gateway with RabbitMQ & gRPC.",
+      "category": "Microservices",
+      "description": "Complete microservices ecosystem with Catalog, Basket, Discount, and Ordering services, polyglot persistence, RabbitMQ async events, and gRPC communication.",
+      "fullDescription": "4 independently deployable microservices (Catalog, Basket, Discount, Ordering) configured behind a YARP API Gateway. Features polyglot persistence (Marten/PostgreSQL, SQL Server, SQLite), asynchronous event-driven communication via RabbitMQ, and high-performance gRPC synchronous service invocations.",
       "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-      "tags": ["Next.js", "TypeScript", "Tailwind CSS", "Chart.js", "WebSockets", "Node.js"],
-      "demoUrl": "https://example.com/demo/finpulse",
-      "githubUrl": "https://github.com/example/finpulse",
+      "tags": [".NET Microservices", "YARP Gateway", "RabbitMQ", "gRPC", "PostgreSQL", "Docker"],
+      "demoUrl": "https://drive.google.com/file/d/1ncTyHQOOVLb-jpRR3FuWNttXllPE7C8j/view?usp=drive_link",
+      "githubUrl": "https://github.com/youssef-mohammed317/eshop-microservices",
       "featured": true,
-      "metric": "$42M+ Tracked Assets",
+      "metric": "4 Services & Polyglot DB",
       "keyFeatures": [
-        "Interactive candle, line, and volume canvas charts",
-        "Automated PDF tax and performance reports generation",
-        "Zero-latency multi-exchange WebSocket connection pool",
-        "Responsive layout adapted for mobile and 4K displays"
+        "YARP (Yet Another Reverse Proxy) API Gateway routing and rate limiting",
+        "Polyglot persistence: Marten/PostgreSQL, SQL Server, and SQLite",
+        "Event-driven architecture with RabbitMQ and MassTransit",
+        "High-performance inter-service communication with gRPC"
       ]
     },
     {
-      "id": "lumina-design-system",
-      "title": "Lumina — Modern Component Library",
-      "tagline": "Accessible, open-source Tailwind CSS & React component library.",
-      "category": "Frontend",
-      "description": "An open-source design system comprising 60+ accessible, fully composable UI components with built-in dark mode and keyboard navigation.",
-      "fullDescription": "Lumina helps developers launch aesthetic products faster. Written in pure TypeScript with Tailwind CSS and Radix primitives, Lumina achieves 100% WCAG 2.1 AA accessibility compliance and zero runtime CSS bloat.",
-      "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
-      "tags": ["React", "TypeScript", "Tailwind CSS", "Radix UI", "NPM Package"],
-      "demoUrl": "https://example.com/demo/lumina",
-      "githubUrl": "https://github.com/example/lumina",
+      "id": "ecommerce-microservices-k8s",
+      "title": "eCommerce Microservices on Kubernetes (AKS)",
+      "tagline": "5-repository enterprise microservices suite deployed to Kubernetes with CI/CD.",
+      "category": "DevOps & Cloud",
+      "description": "Built a 5-repository microservices eCommerce system (Users, Products, Orders, API Gateway, Infrastructure) with polyglot persistence, Ocelot Gateway, and automated CI/CD.",
+      "fullDescription": "Enterprise 5-repository microservices architecture featuring polyglot persistence (PostgreSQL, MySQL, MongoDB), an Ocelot API Gateway, RabbitMQ event-driven cache invalidation, Redis distributed caching, and Polly resilience policies (Retry, Circuit Breaker). Fully containerized and deployed to Kubernetes with automated GitHub Actions CI/CD pipelines.",
+      "image": "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["Kubernetes", "Ocelot", "RabbitMQ", "Redis", "GitHub Actions", "Polly", "xUnit"],
+      "demoUrl": "https://drive.google.com/file/d/1VVxsmjJU57NlZn8QpqDcRlLGiE5nztiJ/view?usp=drive_link",
+      "githubUrl": "https://github.com/ym-harsha-ecommerce-microservices",
       "featured": true,
-      "metric": "850+ GitHub Stars",
+      "metric": "5 Repos & K8s Deployed",
       "keyFeatures": [
-        "60+ production-ready copy-paste components",
-        "WAI-ARIA compliant keyboard focus states",
-        "Full support for Tailwind CSS v4 and CSS variables",
-        "Interactive Storybook documentation and playground"
+        "5 separate repositories (Users API, Products API, Orders API, Gateway, Infrastructure)",
+        "Ocelot API Gateway with JWT claims delegation",
+        "RabbitMQ event-driven Redis cache invalidation",
+        "Automated deployment to Kubernetes (Minikube / AKS) via GitHub Actions"
       ]
     },
     {
-      "id": "orbit-ecommerce-engine",
-      "title": "Orbit — Headless E-Commerce Platform",
-      "tagline": "Lightning-fast shopping experience with Next.js and Shopify Storefront API.",
-      "category": "Full-Stack",
-      "description": "A high-conversion headless storefront with instant optimistic cart updates, Algolia instant search, and localized international currencies.",
-      "fullDescription": "Built to tackle slow loading times on traditional store platforms. Orbit achieves sub-300ms page transitions, reducing checkout abandonment by 28% for international retail brands.",
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-      "tags": ["Next.js", "Shopify API", "Tailwind CSS", "Zustand", "Algolia"],
-      "demoUrl": "https://example.com/demo/orbit",
-      "githubUrl": "https://github.com/example/orbit-store",
-      "featured": false,
-      "metric": "2.4x Conversion Increase",
+      "id": "clean-architecture-template",
+      "title": "Clean Architecture Web API & Azure Services",
+      "tagline": "Production-ready ASP.NET Core 8 Web API boilerplate with Azure cloud integration.",
+      "category": "Clean Architecture",
+      "description": "Scalable enterprise Web API implementing Clean Architecture, CQRS, MediatR, FluentValidation, JWT authentication, and Azure cloud services integration.",
+      "fullDescription": "A robust, production-tested boilerplate designed to accelerate enterprise backend development. Follows strict Clean Architecture layer separation, CQRS with MediatR, FluentValidation pipeline behaviors, structured logging with Serilog, and seamless Azure Cloud services integration.",
+      "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["ASP.NET Core 8", "Clean Architecture", "Azure Services", "CQRS", "JWT", "Swagger"],
+      "demoUrl": "https://drive.google.com/file/d/11CF_e1657bjhhq0HsWZyEIH0lMH6ANH2/view",
+      "githubUrl": "https://github.com/ym-udemy-dotnet-path/clean-architecture-template",
+      "featured": true,
+      "metric": "Clean Architecture Template",
       "keyFeatures": [
-        "Optimistic cart drawer with instant quantity calculations",
-        "Algolia instant multi-filter search with autocomplete",
-        "Multi-currency geolocation pricing selector",
-        "Lighthouse performance score of 99/100"
+        "Strict Domain, Application, Infrastructure, and API layer separation",
+        "CQRS pattern with MediatR request and notification handlers",
+        "Comprehensive Swagger/OpenAPI documentation with JWT bearer support",
+        "Azure Services integration and cloud deployment readiness"
       ]
     },
     {
-      "id": "zenith-task-manager",
-      "title": "Zenith — Kanban & Project Workspace",
-      "tagline": "Minimalist, keyboard-first task manager for remote agile teams.",
-      "category": "Frontend",
-      "description": "Smooth drag-and-drop workflow system with offline persistence, markdown checklists, and keyboard shortcuts.",
-      "fullDescription": "Zenith eliminates project management clutter. Crafted with React, Tailwind CSS, and HTML5 drag-and-drop APIs, it allows product teams to organize sprints without touching the mouse.",
+      "id": "hr-leave-management-api",
+      "title": "HR Leave Management Enterprise API",
+      "tagline": "Role-based HR leave management system with automated approvals and unit testing.",
+      "category": "Enterprise APIs",
+      "description": "Complete enterprise HR API featuring role-based authorization, leave allocation workflows, email notification triggers, and comprehensive unit tests with xUnit and Moq.",
+      "fullDescription": "Enterprise human resources platform automating employee leave allocations and approvals. Built using ASP.NET Core and Clean Architecture with comprehensive unit test coverage utilizing xUnit, Moq, AutoFixture, and FluentAssertions to ensure zero-regression releases.",
       "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
-      "tags": ["React", "TypeScript", "Tailwind CSS", "IndexedDB", "Vite"],
-      "demoUrl": "https://example.com/demo/zenith",
-      "githubUrl": "https://github.com/example/zenith",
+      "tags": ["ASP.NET Core", "Clean Architecture", "xUnit", "Moq", "EF Core", "JWT"],
+      "demoUrl": "https://github.com/ym-udemy-dotnet-path/hr-leave-management-api",
+      "githubUrl": "https://github.com/ym-udemy-dotnet-path/hr-leave-management-api",
       "featured": false,
-      "metric": "4.9/5 Rating",
+      "metric": "Comprehensive Unit Tests",
       "keyFeatures": [
-        "Fluid drag-and-drop cards with smooth animations",
-        "Full offline support via IndexedDB synchronization",
-        "Vim-inspired keyboard navigation and shortcuts",
-        "Exportable boards to CSV, JSON, and Markdown"
+        "Role-based authorization for Employees and HR Managers",
+        "Automated leave request review and approval workflows",
+        "Comprehensive unit tests using xUnit, Moq, and FluentAssertions",
+        "Transactional email alerts for leave status updates"
       ]
     },
     {
-      "id": "pulse-health-tracker",
-      "title": "Pulse — Mobile-First Wellness Web App",
-      "tagline": "Health metrics tracking and habits journal for modern wellness seekers.",
-      "category": "Mobile / Web",
-      "description": "Progressive Web App featuring biometric analytics, streak calculations, and water/sleep reminders.",
-      "fullDescription": "Pulse combines health telemetry with habit gamification. Designed mobile-first with responsive touch gestures, haptic feedback hooks, and push notifications.",
-      "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
-      "tags": ["Next.js", "PWA", "Tailwind CSS", "TypeScript", "Chart.js"],
-      "demoUrl": "https://example.com/demo/pulse",
-      "githubUrl": "https://github.com/example/pulse-health",
+      "id": "ecommerce-api-onion",
+      "title": "eCommerce API (Onion Architecture & Stripe)",
+      "tagline": "RESTful API with Repository Pattern, Unit of Work, Redis cache, and Stripe payments.",
+      "category": "Enterprise APIs",
+      "description": "Robust eCommerce backend built with Onion Architecture, Generic Repository pattern, Unit of Work, Redis distributed caching, and Stripe payment gateway.",
+      "fullDescription": "Built during the Route Academy Diploma, this high-performance eCommerce API leverages Onion Architecture to isolate core business rules from external dependencies. Features include Redis caching for catalog queries, Stripe checkout integration, specification pattern querying, and JWT authentication.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["ASP.NET Core", "Onion Architecture", "Redis", "Stripe API", "SQL Server"],
+      "demoUrl": "https://github.com/ym-route-backend-diploma/ecommerce-api-onion",
+      "githubUrl": "https://github.com/ym-route-backend-diploma/ecommerce-api-onion",
       "featured": false,
-      "metric": "8,500+ Daily Streaks",
+      "metric": "Stripe & Redis Integrated",
       "keyFeatures": [
-        "Installable PWA with offline caching",
-        "Interactive streak calendar and milestone badges",
-        "Encrypted local health data storage",
-        "Smooth micro-animations using pure Tailwind CSS"
+        "Generic Repository and Unit of Work patterns for clean data access",
+        "Redis in-memory caching to boost product catalog performance",
+        "Stripe payment gateway integration with webhook listeners",
+        "Specification pattern for dynamic filtering, sorting, and pagination"
       ]
     }
   ],
   "testimonials": [
     {
       "id": "test-1",
-      "name": "Marcus Vance",
-      "role": "CTO & Co-Founder",
-      "company": "Verve Technologies",
+      "name": "Eng. Mohamed Tarek",
+      "role": "Senior Cloud & DevOps Architect",
+      "company": "DEPI Initiative",
       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
-      "content": "Alex delivered our Next.js customer portal 3 weeks before our deadline. The design is breathtaking, the code is meticulously organized, and our users frequently compliment the speed.",
+      "content": "Youssef demonstrates an exceptional grasp of cloud-native concepts. His ability to architect automated CI/CD pipelines and orchestrate Kubernetes clusters with speed and precision sets him apart.",
       "rating": 5
     },
     {
       "id": "test-2",
-      "name": "Elena Rostova",
-      "role": "Head of Design",
-      "company": "Prism Studio",
-      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
-      "content": "Finding an engineer who truly respects design details is rare. Alex translated our Figma design down to the exact pixel and spacing, then elevated it with smooth, tasteful animations.",
+      "name": "Dr. Ahmed Hassan",
+      "role": "Faculty of Engineering Professor",
+      "company": "Benha University",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+      "content": "Youssef is among the top 1% of students in our Computer Engineering department (Grade: 92% Excellent). His deep theoretical algorithmic foundation reflects clearly in the robust software he engineers.",
       "rating": 5
     },
     {
       "id": "test-3",
-      "name": "Tariq Al-Mansoor",
-      "role": "Founder & Managing Director",
-      "company": "Nova Ventures",
-      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
-      "content": "The best investment we made for our SaaS MVP. Alex is extremely transparent, writes clean TypeScript, and helped us avoid costly architectural mistakes early on. 10/10 recommendation!",
+      "name": "Eng. Mahmoud Gamal",
+      "role": "Lead .NET Technical Instructor",
+      "company": "Route Academy",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
+      "content": "Youssef's implementation of Clean Architecture and distributed microservices was one of the finest in our diploma. He writes clean, testable, enterprise-ready C# code that adheres strictly to SOLID principles.",
       "rating": 5
     }
   ],
   "contact": {
-    "headline": "Let's Build Something Exceptional Together",
-    "description": "Have a project in mind, an engineering opening on your team, or want to discuss a potential collaboration? Send a message below and I will get back to you within 24 hours.",
-    "email": "alex.morgan@example.com",
-    "phone": "+1 (555) 432-8900",
-    "location": "San Francisco, CA (Open to Worldwide Remote)",
-    "calendlyUrl": "https://calendly.com",
+    "headline": "Let's Build Robust Backend Systems Together",
+    "description": "Have a high-scale backend challenge, need a dedicated .NET engineer, or looking to discuss cloud-native architectures? Send a message below or reach out directly.",
+    "email": "youssefmohammad040317@gmail.com",
+    "phone": "+20 1500177961",
+    "location": "Cairo, Egypt (Open to Worldwide Remote)",
+    "calendlyUrl": "",
     "web3FormsAccessKey": "YOUR_WEB3FORMS_ACCESS_KEY_HERE",
     "formspreeEndpoint": "",
-    "successMessage": "Thank you! Your message has been sent successfully. I will get in touch with you shortly.",
-    "workingHours": "Mon - Fri, 9:00 AM - 6:00 PM (PST)",
-    "availabilityBadge": "Currently accepting new client projects"
+    "successMessage": "Thank you! Your message has been received. I will reply to you within 24 hours.",
+    "workingHours": "Sun - Thu, 9:00 AM - 6:00 PM (Cairo / UTC+3)",
+    "availabilityBadge": "Available for Full-time Roles & Engineering Opportunities"
   }
 }

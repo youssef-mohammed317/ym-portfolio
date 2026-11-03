@@ -1,105 +1,101 @@
-# ⚡ Modern Turnkey Portfolio Template (Next.js & Tailwind CSS)
+# ⚡ Youssef Mohamed Abd El-Fattah — Official Developer Portfolio
 
-> **A high-converting, 100% front-end portfolio template built with Next.js 16 (App Router), React 19, and Tailwind CSS v4 — entirely driven by a single `data.json` file.**
-
-Designed specifically as a **ready-to-sell digital product** for freelancers, developers, designers, architects, photographers, and professionals who want a modern, clean online portfolio without writing or touching any code.
-
----
-
-## 🌟 Key Features
-
-- **🚀 100% Front-End & Static Fast**: No databases or server maintenance required. Generates ultra-fast static HTML/CSS.
-- **📄 Single File Data Management (`data.json`)**: Every single piece of content (profile, photo, titles, bio, skills, timeline, projects, reviews, contact details, social links, SEO tags) is configured in `src/data/data.json`.
-- **🌓 Seamless Dark / Light Mode**: Smooth theme toggle with system preference detection and localStorage persistence.
-- **📥 1-Click CV / Resume Download & Print Modal**: One-click download of `resume.pdf` plus a live interactive printable resume modal formatted to A4 paper.
-- **📬 Zero-Backend Contact Form (Web3Forms / Formspree)**: Directly forwards client inquiries to the user's personal email for free using Web3Forms.
-- **🎨 Interactive Projects Showcase**: Filter by category, live instant search input, and deep-dive Case Study detail modals.
-- **🛠️ Built-in Live Customizer Drawer**: Real-time in-browser data editor allowing prospective clients or buyers to test modifications live and export their custom `data.json` with a single click.
+> **Personal developer portfolio and engineering showcase of Youssef Mohamed Abd El-Fattah, .NET Backend Engineer and DevOps Practitioner.**  
+> Built with **Next.js 16 (App Router)**, **React 19**, and **Tailwind CSS v4** — statically optimized for global edge delivery on **Cloudflare Pages**.
 
 ---
 
-## 📁 Project Architecture
+## 🌟 Engineering Profile
+
+- **🚀 Domain Specialization**: Distributed .NET Microservices, Modular Monoliths, Clean Architecture, Onion Architecture, and Domain-Driven Design (DDD).
+- **☁️ Cloud & DevOps (DEPI)**: Containerization with Docker, orchestration with Kubernetes (AKS & Minikube), Infrastructure as Code with Terraform, and automated GitHub Actions CI/CD.
+- **⚡ High Performance & Messaging**: Asynchronous event-driven communication via RabbitMQ & MassTransit, sub-millisecond inter-service calls via gRPC, and YARP / Ocelot API Gateways.
+- **🧠 Problem Solving**: 250+ solved Katas on CodeWars and from-scratch C++ implementations of complex Data Structures & Algorithms.
+- **🎓 Academic Background**: Computer Engineering Department, Faculty of Engineering, Benha University (Class of 2027) with an **Excellent grade (92%)**.
+
+---
+
+## 🏛️ GitHub Organizations & Architecture Hubs
+
+My engineering work is organized into dedicated, production-grade GitHub Organizations separating microservices, clean architectures, and diploma implementations:
+
+1. [**`ym-harsha-ecommerce-microservices`**](https://github.com/ym-harsha-ecommerce-microservices):
+   - 5-Repository Microservices Suite with Kubernetes (AKS) & GitHub Actions CI/CD.
+   - Includes Ocelot API Gateway, Orders API (MongoDB & Polly), Products Minimal API (MySQL), Users API (PostgreSQL + Dapper), and Kubernetes Infrastructure.
+2. [**`ym-udemy-dotnet-path`**](https://github.com/ym-udemy-dotnet-path):
+   - Enterprise Clean Architecture, CQRS, MediatR, and Azure Cloud services.
+   - Features 8-layer Clean Architecture templates, Restaurants API, HR Leave Management, and a full Stocks Trading Platform.
+3. [**`ym-route-backend-diploma`**](https://github.com/ym-route-backend-diploma):
+   - Route IT Training Center Diploma implementations.
+   - 7-layer Onion Architecture eCommerce API with dual Identity contexts, Redis basket caching, and Stripe payments.
+4. [**`youssef-mohammed317`**](https://github.com/Youssef-Mohammed317):
+   - Personal profile hosting `eshop-modulith` (MediatR & Transactional Outbox), `eshop-microservices` (YARP & gRPC), DEPI DevOps workshops, and C++ DSA.
+
+---
+
+## 📁 Repository Architecture
 
 ```
 developer-portfolio-template/
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx         # Root layout with dynamic SEO metadata from data.json
+│   │   ├── layout.tsx         # Dynamic SEO metadata & OpenGraph tags
 │   │   ├── page.tsx           # Assembled portfolio sections
 │   │   └── globals.css        # Tailwind v4 theme and custom dark variant
 │   ├── components/
-│   │   ├── Navbar.tsx         # Sticky glassmorphism header & theme switch
-│   │   ├── Hero.tsx           # Rotating titles, avatar, CTAs, & stats bar
-│   │   ├── About.tsx          # Story, quick facts, & value highlights
-│   │   ├── Skills.tsx         # Categorized skills with animated progress bars
-│   │   ├── Experience.tsx     # Work & education dual timeline
-│   │   ├── Projects.tsx       # Filterable showcase with search
-│   │   ├── ProjectModal.tsx   # Project case study detail dialog
-│   │   ├── Testimonials.tsx   # Client endorsements & 5-star ratings
-│   │   ├── Contact.tsx        # Web3Forms-integrated contact form & email copy
+│   │   ├── Navbar.tsx         # Glassmorphism header & theme switch
+│   │   ├── Hero.tsx           # Headline, bio, avatar, and quick stats
+│   │   ├── About.tsx          # Academic standing & engineering journey
+│   │   ├── Skills.tsx         # Categorized tech stack & proficiencies
+│   │   ├── Experience.tsx     # DEPI DevOps intern, ITI, & Route diploma
+│   │   ├── GithubOrgs.tsx     # 🌟 Showcase of 4 GitHub Organizations & repos
+│   │   ├── Projects.tsx       # Filterable showcase with smart keyword search
+│   │   ├── ProjectModal.tsx   # Project architecture case study dialog
+│   │   ├── Testimonials.tsx   # Instructor & academic recommendations
+│   │   ├── Contact.tsx        # Direct messaging form with real-time validation
 │   │   ├── ResumeModal.tsx    # Live formatted printable CV & PDF download
-│   │   ├── LiveEditorDrawer.tsx # In-browser live editor & JSON exporter
-│   │   ├── Icons.tsx          # Dynamic SVG & Lucide icon provider
+│   │   ├── Icons.tsx          # SVG & brand icons (GitHub, Codewars, etc.)
 │   │   └── Providers.tsx      # Theme and Portfolio context providers
 │   ├── context/
 │   │   ├── ThemeContext.tsx   # Dark/light theme state
-│   │   └── PortfolioContext.tsx # Central data and live-preview state
+│   │   └── PortfolioContext.tsx # Central data provider
 │   ├── data/
-│   │   └── data.json          # 🌟 Single source of truth for all content
+│   │   └── data.json          # 🌟 Single source of truth for portfolio data
 │   └── types/
-│       └── portfolio.ts       # Full TypeScript schema for portfolio data
+│       └── portfolio.ts       # TypeScript interfaces for portfolio data
 ├── public/
-│   ├── data.json              # Public copy for static queries
-│   └── resume.pdf             # Fallback starter resume document
-├── CUSTOMIZATION_GUIDE.md     # Detailed client onboarding guide (Arabic & English)
+│   ├── avatar.jpg             # User portrait
+│   ├── resume.pdf             # Youssef's verified CV
+│   └── _headers               # Cloudflare Pages edge caching & security headers
+├── wrangler.toml              # Cloudflare Pages static assets configuration
 └── package.json
 ```
 
 ---
 
-## 🛠️ Quick Start
+## 🛠️ Local Development
 
 ### 1. Install Dependencies
 ```bash
 npm install
 ```
 
-### 2. Run the Development Server
+### 2. Run Development Server
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-### 3. Build for Production (Static HTML Export)
+### 3. Build Static HTML Export
 ```bash
 npm run build
 ```
-This generates the standalone `out/` directory, optimized for Cloudflare Pages, Vercel, Netlify, or any static host.
+Generates the optimized static distribution in `out/`.
 
 ---
 
-## ⚡ Cloudflare Pages Deployment
+## ⚡ Deployment & CI/CD
 
-This template is 100% pre-configured for Cloudflare Pages with zero-config edge hosting:
-
-### Option A: Cloudflare Dashboard (1-Click Git Integration)
-1. Go to the [Cloudflare Dashboard](https://dash.cloudflare.com/) > **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
-2. Select your repository: `ym-dev-studio/developer-portfolio-template`.
-3. Set the following build settings:
-   - **Framework preset**: `None` or `Next.js (Static HTML Export)`
-   - **Build command**: `npm run build`
-   - **Build output directory**: `out`
-   - **Node.js version**: `20` (add environment variable `NODE_VERSION = 20`)
-4. Click **Save and Deploy**. Every push to `main` or `master` will automatically deploy live.
-
-### Option B: Automated GitHub Actions CI/CD
-The included `.github/workflows/ci-cd.yml` pipeline automatically tests and deploys your site on every push.
-To enable direct deployment via the GitHub workflow, add these two repository secrets in **GitHub Repo Settings > Secrets and variables > Actions**:
-- `CLOUDFLARE_API_TOKEN`: Your Cloudflare API Token with *Cloudflare Pages: Edit* permissions.
-- `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare Account ID found in the dashboard URL or overview.
-
----
-
-## 📖 Client Customization
-
-See the comprehensive [CUSTOMIZATION_GUIDE.md](./CUSTOMIZATION_GUIDE.md) for detailed Arabic & English instructions on customizing `data.json`, setting up the free Web3Forms email key, and 1-click deployment to Cloudflare Pages, Vercel, or Netlify.
+This website is automatically built and deployed to **Cloudflare Pages** via GitHub Actions on every push to `main` or `master`.
+- **Workflow**: `.github/workflows/ci-cd.yml`
+- **Output Directory**: `out`

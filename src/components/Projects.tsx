@@ -102,13 +102,13 @@ export function Projects() {
         <div className="flex flex-col items-center text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200/50 dark:border-indigo-800/50 mb-3">
             <FolderGit2 className="w-3.5 h-3.5" />
-            <span>Portfolio Highlights</span>
+            <span>Enterprise Repositories & Architectures</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Featured Projects & Case Studies
+            Featured Engineering Projects & Repositories
           </h2>
           <p className="mt-3 text-base text-slate-600 dark:text-slate-400 max-w-xl">
-            A curated showcase of real-world web apps, SaaS tools, and open-source contributions.
+            Architected with strict Clean Architecture, Domain-Driven Design, distributed messaging, and cloud deployments.
           </p>
         </div>
 

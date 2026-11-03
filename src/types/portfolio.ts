@@ -121,7 +121,7 @@ export interface PortfolioData {
     description: string;
     ogImage?: string;
     keywords?: string[];
-    enableLiveEditor: boolean;
+    enableLiveEditor?: boolean;
     defaultTheme: "light" | "dark" | "system";
   };
   personal: PersonalInfo;

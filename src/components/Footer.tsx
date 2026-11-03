@@ -78,7 +78,7 @@ export function Footer() {
             <span>Built with Next.js & Tailwind CSS</span>
             <span>•</span>
             <span className="text-indigo-600 dark:text-indigo-400 font-medium">
-              100% data.json Driven
+              Engineered with Passion & Clean Code
             </span>
           </p>
         </div>

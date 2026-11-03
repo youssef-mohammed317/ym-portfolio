@@ -20,7 +20,7 @@ export function Navbar({ onOpenResume }: NavbarProps) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ["about", "skills", "experience", "projects", "testimonials", "contact"];
+      const sections = ["about", "skills", "experience", "organizations", "projects", "testimonials", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -44,8 +44,8 @@ export function Navbar({ onOpenResume }: NavbarProps) {
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },
     { label: "Experience", href: "#experience" },
+    { label: "Organizations", href: "#organizations" },
     { label: "Projects", href: "#projects" },
-    { label: "Reviews", href: "#testimonials" },
     { label: "Contact", href: "#contact" },
   ];
 

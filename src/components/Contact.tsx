@@ -25,7 +25,7 @@ export function Contact() {
     name: "",
     email: "",
     subject: "",
-    serviceType: "Full-Stack Web App",
+    serviceType: ".NET Backend & Web API",
     message: "",
   });
 
@@ -49,11 +49,12 @@ export function Contact() {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
 
   const serviceOptions = [
-    "Full-Stack Web App",
-    "Next.js Frontend / UI",
-    "SaaS Architecture",
+    ".NET Backend & Web API",
+    "Microservices & Distributed Systems",
+    "Clean Architecture Consulting",
+    "DevOps & Kubernetes Deployment",
     "Full-Time Hire / Contract",
-    "Other Consultation",
+    "General Inquiry",
   ];
 
   const handleCopyEmail = () => {
@@ -411,20 +412,6 @@ export function Contact() {
                       {errorMessage}
                     </p>
                   </div>
-                </div>
-              )}
-
-              {/* Notice for buyer about Web3Forms setup */}
-              {!isConfiguredKey && (
-                <div className="mb-6 p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200/70 dark:border-amber-800/50 text-amber-900 dark:text-amber-200 text-xs flex items-center gap-2.5">
-                  <Sparkles className="w-4 h-4 text-amber-500 shrink-0" />
-                  <span>
-                    <strong>Free Web3Forms Hookup:</strong> Add your free access key to{" "}
-                    <code className="px-1 py-0.5 bg-amber-100 dark:bg-amber-900/60 rounded">
-                      data.json
-                    </code>{" "}
-                    to receive emails directly.
-                  </span>
                 </div>
               )}
 

@@ -1,21 +1,23 @@
 {
   "siteMetadata": {
     "title": "Youssef Mohamed Abd El-Fattah — .NET Backend Engineer & DevOps Practitioner",
-    "description": "Portfolio of Youssef Mohamed Abd El-Fattah, specializing in scalable .NET microservices, Clean Architecture, CQRS, Docker, Kubernetes, and cloud-native solutions.",
+    "description": "Personal developer portfolio of Youssef Mohamed Abd El-Fattah. Senior .NET Backend Developer and DevOps Practitioner specializing in Microservices, Clean Architecture, CQRS, Docker, Kubernetes, and cloud-native solutions.",
     "ogImage": "https://github.com/Youssef-Mohammed317.png",
     "keywords": [
-      ".NET Backend Developer",
+      "Youssef Mohamed Abd El-Fattah",
+      ".NET Backend Engineer",
       "ASP.NET Core",
       "Microservices",
       "Clean Architecture",
+      "CQRS",
+      "MediatR",
       "DevOps",
       "Docker",
       "Kubernetes",
-      "CQRS",
       "Benha University",
       "DEPI"
     ],
-    "enableLiveEditor": true,
+    "enableLiveEditor": false,
     "defaultTheme": "dark"
   },
   "personal": {
@@ -25,15 +27,15 @@
       ".NET Backend Engineer",
       "ASP.NET Core & Microservices Architect",
       "Clean Architecture & CQRS Specialist",
-      "DevOps & Cloud-Native Practitioner (DEPI)"
+      "DevOps & Kubernetes Practitioner (DEPI)"
     ],
-    "bio": ".NET Backend Developer specializing in building scalable RESTful APIs with ASP.NET Core and distributed .NET microservices. Experienced in Clean Architecture, CQRS, and design patterns, with strong testing practices using xUnit and Moq. Passionate about DevOps, Docker, Kubernetes, and automated CI/CD pipelines.",
+    "bio": ".NET Backend Developer specializing in architecting resilient RESTful APIs with ASP.NET Core and distributed .NET microservices. Experienced in Clean Architecture, CQRS, and enterprise design patterns, backed by automated testing with xUnit/Moq. Passionate about DevOps, Docker, Kubernetes, and automated CI/CD pipelines.",
     "avatar": "https://github.com/Youssef-Mohammed317.png",
     "status": {
       "available": true,
       "text": "Open for Full-time Roles & High-Impact Engineering Opportunities"
     },
-    "location": "Cairo, Egypt (Open to Remote Worldwide)",
+    "location": "Cairo, Egypt (Open to Worldwide Remote)",
     "email": "youssefmohammad040317@gmail.com",
     "phone": "+20 1500177961",
     "resumeUrl": "/resume.pdf"
@@ -71,9 +73,9 @@
       "highlight": "Algorithmic problem solving"
     },
     {
-      "value": "15+",
+      "value": "20+",
       "label": "Production & Microservices Repos",
-      "highlight": "Enterprise .NET systems"
+      "highlight": "Across 4 GitHub Hubs"
     },
     {
       "value": "92%",
@@ -82,8 +84,8 @@
     },
     {
       "value": "100%",
-      "label": "Clean Architecture",
-      "highlight": "Production-grade standards"
+      "label": "Clean Architecture & Testing",
+      "highlight": "xUnit, Moq & Production-grade standards"
     }
   ],
   "about": {
@@ -147,35 +149,35 @@
       "description": "Building high-throughput, resilient, and enterprise-grade backend APIs.",
       "items": [
         { "name": "ASP.NET Core (MVC & Web API)", "level": 96, "badge": "Expert", "icon": "server" },
-        { "name": ".NET Microservices & Modular Monoliths", "level": 94, "badge": "Expert", "icon": "network" },
-        { "name": "Clean Architecture, Onion & DDD", "level": 95, "badge": "Expert", "icon": "layers" },
-        { "name": "Entity Framework Core & Dapper", "level": 92, "badge": "Advanced", "icon": "database" },
-        { "name": "CQRS (MediatR) & Outbox Pattern", "level": 92, "badge": "Advanced", "icon": "zap" },
-        { "name": "RESTful APIs & gRPC Protocols", "level": 90, "badge": "Advanced", "icon": "code" }
+        { "name": ".NET Microservices & Modular Monoliths", "level": 95, "badge": "Expert", "icon": "network" },
+        { "name": "Clean Architecture, Onion & DDD", "level": 96, "badge": "Expert", "icon": "layers" },
+        { "name": "Entity Framework Core & Dapper", "level": 94, "badge": "Advanced", "icon": "database" },
+        { "name": "CQRS (MediatR) & Outbox Pattern", "level": 93, "badge": "Advanced", "icon": "zap" },
+        { "name": "RESTful APIs & gRPC Protocols", "level": 92, "badge": "Advanced", "icon": "code" }
       ]
     },
     {
       "category": "Databases, Caching & Message Brokers",
       "description": "Scalable data stores, distributed caching, and event-driven messaging.",
       "items": [
-        { "name": "SQL Server & PostgreSQL", "level": 94, "badge": "Expert", "icon": "database" },
-        { "name": "Redis Distributed Caching", "level": 88, "badge": "Advanced", "icon": "cpu" },
-        { "name": "RabbitMQ & MassTransit", "level": 88, "badge": "Advanced", "icon": "network" },
-        { "name": "YARP & Ocelot API Gateways", "level": 86, "badge": "Advanced", "icon": "shield" },
-        { "name": "MongoDB & Marten Document DB", "level": 84, "badge": "Proficient", "icon": "database" },
-        { "name": "JWT Authentication & Identity", "level": 92, "badge": "Expert", "icon": "shield" }
+        { "name": "SQL Server & PostgreSQL", "level": 95, "badge": "Expert", "icon": "database" },
+        { "name": "Redis Distributed Caching", "level": 90, "badge": "Advanced", "icon": "cpu" },
+        { "name": "RabbitMQ & MassTransit", "level": 90, "badge": "Advanced", "icon": "network" },
+        { "name": "YARP & Ocelot API Gateways", "level": 88, "badge": "Advanced", "icon": "shield" },
+        { "name": "MongoDB & Marten Document DB", "level": 85, "badge": "Proficient", "icon": "database" },
+        { "name": "JWT Authentication & Identity", "level": 94, "badge": "Expert", "icon": "shield" }
       ]
     },
     {
       "category": "DevOps, Cloud & Quality Assurance",
       "description": "Automated deployment pipelines, container orchestration, and automated testing.",
       "items": [
-        { "name": "Docker & Containerization", "level": 92, "badge": "Expert", "icon": "box" },
-        { "name": "Kubernetes (AKS & Minikube)", "level": 86, "badge": "Advanced", "icon": "cloud" },
-        { "name": "GitHub Actions CI/CD", "level": 90, "badge": "Advanced", "icon": "git" },
-        { "name": "xUnit, Moq & AutoFixture", "level": 92, "badge": "Expert", "icon": "check-circle" },
-        { "name": "Linux (RHEL), Bash & Nginx", "level": 88, "badge": "Advanced", "icon": "terminal" },
-        { "name": "Terraform, Ansible & AWS Cloud", "level": 82, "badge": "Proficient", "icon": "cloud" }
+        { "name": "Docker & Containerization", "level": 94, "badge": "Expert", "icon": "box" },
+        { "name": "Kubernetes (AKS & Minikube)", "level": 88, "badge": "Advanced", "icon": "cloud" },
+        { "name": "GitHub Actions CI/CD", "level": 92, "badge": "Advanced", "icon": "git" },
+        { "name": "xUnit, Moq & AutoFixture", "level": 94, "badge": "Expert", "icon": "check-circle" },
+        { "name": "Linux (RHEL), Bash & Nginx", "level": 90, "badge": "Advanced", "icon": "terminal" },
+        { "name": "Terraform, Ansible & AWS Cloud", "level": 85, "badge": "Proficient", "icon": "cloud" }
       ]
     }
   ],
@@ -188,11 +190,11 @@
       "period": "Jul 2026 - Present",
       "location": "Cairo, Egypt (Hybrid)",
       "type": "Internship",
-      "description": "Leveraged DevOps practices to bridge the gap between development and operations, enhancing backend application deployment, scalability, and cloud-native architecture.",
+      "description": "Leveraging DevOps best practices to bridge development and operations, enhancing backend application deployment, scalability, and cloud-native architecture.",
       "achievements": [
-        "Acquired hands-on experience building automated CI/CD pipelines with GitHub Actions and containerization via Docker.",
-        "Deployed and managed Kubernetes clusters, automating microservices provisioning and service discovery.",
-        "Automated server setup and infrastructure using Linux (RHEL), Bash scripting, Nginx reverse proxy, and Terraform."
+        "Architecting automated CI/CD pipelines with GitHub Actions and multi-stage Docker containerization.",
+        "Deploying and managing Kubernetes clusters, automating microservices provisioning, health checks, and service discovery.",
+        "Automating infrastructure using Linux (RHEL), Bash scripting, Nginx reverse proxy, and Terraform."
       ],
       "technologies": ["Linux (RHEL)", "Docker", "Kubernetes", "GitHub Actions", "Nginx", "Bash", "Terraform", "Ansible", "AWS"]
     },
@@ -204,10 +206,10 @@
       "period": "Jul 2026 - Aug 2026",
       "location": "Cairo, Egypt",
       "type": "Trainee",
-      "description": "Built a solid foundation in enterprise web development, mastering C# programming, object-oriented principles, and relational database design.",
+      "description": "Built a solid foundation in enterprise web development, mastering C# programming, object-oriented design, and relational database optimization.",
       "achievements": [
         "Architected and integrated a full-stack web project utilizing ASP.NET Core for backend logic with SQL Server.",
-        "Implemented relational schemas, optimized LINQ queries, and integrated responsive frontend views."
+        "Implemented normalized relational schemas, optimized LINQ queries, and integrated responsive frontend views."
       ],
       "technologies": ["C#", "ASP.NET Core", "SQL Server", "OOP", "Entity Framework", "REST APIs"]
     },
@@ -269,46 +271,46 @@
       ]
     }
   ],
-  "projectCategories": ["All", "Microservices", "Clean Architecture", "DevOps & Cloud", "Enterprise APIs"],
+  "projectCategories": ["All", "Microservices & Monoliths", "Clean Architecture & APIs", "DevOps & Cloud", "Algorithms & DSA"],
   "projects": [
     {
       "id": "eshop-modulith",
       "title": "eshop-modulith — Modular Monolith eCommerce",
-      "tagline": "Modular Monolith eCommerce engine with in-process MediatR & Transactional Outbox.",
-      "category": "Microservices",
-      "description": "Engineered eshop-modulith as an isolated modular monolith containing Catalog, Basket, and Ordering modules sharing a single PostgreSQL instance with per-module schemas.",
-      "fullDescription": "Built the eCommerce domain as an isolated modular monolith to learn direct architectural trade-offs against microservices. Modules communicate in-process via MediatR and leverage the Transactional Outbox pattern to reliably publish cross-module domain events without distributed transaction overhead.",
+      "tagline": ".NET 10 eCommerce Modular Monolith with MediatR & Hand-built Transactional Outbox.",
+      "category": "Microservices & Monoliths",
+      "description": ".NET 10 eCommerce app built as a Modular Monolith: Catalog, Basket, and Ordering modules in one deployable, each with its own PostgreSQL schema, communicating via MediatR and Transactional Outbox + RabbitMQ.",
+      "fullDescription": "Built to explore direct architectural trade-offs against microservices. Modules (Catalog, Basket, Ordering) reside in a single deployable with per-module PostgreSQL schemas, communicating in-process via MediatR. Uses a hand-built Transactional Outbox pattern with RabbitMQ to publish cross-module domain events reliably without distributed transaction overhead. Features Vertical Slice Architecture (VSA), DDD, CQRS, Keycloak authentication, Redis caching, Seq structured logging, and full Dockerization.",
       "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-      "tags": [".NET 8", "Modular Monolith", "DDD", "CQRS", "MediatR", "PostgreSQL", "Outbox Pattern"],
+      "tags": [".NET 10", "Modular Monolith", "DDD", "CQRS", "MediatR", "Transactional Outbox", "RabbitMQ", "Keycloak", "Redis", "Docker"],
       "demoUrl": "https://drive.google.com/file/d/1_wAItBOD8Gtzo6XbzFUMALi6R6WR1smX/view?usp=drive_link",
       "githubUrl": "https://github.com/youssef-mohammed317/eshop-modulith",
       "featured": true,
-      "metric": "Transactional Outbox & MediatR",
+      "metric": "Modular Monolith & Outbox",
       "keyFeatures": [
         "Isolated modules (Catalog, Basket, Ordering) with per-module PostgreSQL schemas",
-        "In-process asynchronous messaging using MediatR",
-        "Transactional Outbox pattern ensuring 100% reliable domain event delivery",
-        "Clean Domain-Driven Design (DDD) with rich aggregate roots"
+        "In-process asynchronous messaging via MediatR and custom Transactional Outbox",
+        "Event-driven cross-module communication using RabbitMQ broker",
+        "Keycloak OAuth2/OIDC authentication, Redis caching, and Seq centralized logging"
       ]
     },
     {
       "id": "eshop-microservices",
       "title": "eshop-microservices — Distributed Event-Driven Architecture",
       "tagline": "4 independently deployable services behind YARP API Gateway with RabbitMQ & gRPC.",
-      "category": "Microservices",
-      "description": "Complete microservices ecosystem with Catalog, Basket, Discount, and Ordering services, polyglot persistence, RabbitMQ async events, and gRPC communication.",
-      "fullDescription": "4 independently deployable microservices (Catalog, Basket, Discount, Ordering) configured behind a YARP API Gateway. Features polyglot persistence (Marten/PostgreSQL, SQL Server, SQLite), asynchronous event-driven communication via RabbitMQ, and high-performance gRPC synchronous service invocations.",
+      "category": "Microservices & Monoliths",
+      "description": ".NET 10 e-commerce microservices system: Catalog, Basket, Discount, and Ordering services behind a YARP API Gateway, each with its own database, MassTransit/RabbitMQ events, and gRPC communication.",
+      "fullDescription": "Complete microservices ecosystem featuring 4 independently deployable services (Catalog, Basket, Discount, Ordering) configured behind a YARP (Yet Another Reverse Proxy) API Gateway. Leverages polyglot persistence (Marten/PostgreSQL document store, SQL Server, SQLite), asynchronous event-driven messaging via MassTransit and RabbitMQ, high-performance gRPC synchronous service-to-service calls, CQRS, Vertical Slice Architecture, and a Razor Pages storefront. Fully dockerized.",
       "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-      "tags": [".NET Microservices", "YARP Gateway", "RabbitMQ", "gRPC", "PostgreSQL", "Docker"],
+      "tags": [".NET 10", "YARP Gateway", "MassTransit", "RabbitMQ", "gRPC", "PostgreSQL", "Marten", "Docker"],
       "demoUrl": "https://drive.google.com/file/d/1ncTyHQOOVLb-jpRR3FuWNttXllPE7C8j/view?usp=drive_link",
       "githubUrl": "https://github.com/youssef-mohammed317/eshop-microservices",
       "featured": true,
-      "metric": "4 Services & Polyglot DB",
+      "metric": "4 Microservices & YARP Gateway",
       "keyFeatures": [
-        "YARP (Yet Another Reverse Proxy) API Gateway routing and rate limiting",
-        "Polyglot persistence: Marten/PostgreSQL, SQL Server, and SQLite",
-        "Event-driven architecture with RabbitMQ and MassTransit",
-        "High-performance inter-service communication with gRPC"
+        "YARP API Gateway routing, rate-limiting, and header forwarding",
+        "Polyglot persistence: Marten Document DB, PostgreSQL, SQL Server, and SQLite",
+        "Asynchronous event-driven communication using MassTransit and RabbitMQ",
+        "Sub-millisecond inter-service communication via gRPC protocols"
       ]
     },
     {
@@ -316,79 +318,199 @@
       "title": "eCommerce Microservices on Kubernetes (AKS)",
       "tagline": "5-repository enterprise microservices suite deployed to Kubernetes with CI/CD.",
       "category": "DevOps & Cloud",
-      "description": "Built a 5-repository microservices eCommerce system (Users, Products, Orders, API Gateway, Infrastructure) with polyglot persistence, Ocelot Gateway, and automated CI/CD.",
-      "fullDescription": "Enterprise 5-repository microservices architecture featuring polyglot persistence (PostgreSQL, MySQL, MongoDB), an Ocelot API Gateway, RabbitMQ event-driven cache invalidation, Redis distributed caching, and Polly resilience policies (Retry, Circuit Breaker). Fully containerized and deployed to Kubernetes with automated GitHub Actions CI/CD pipelines.",
+      "description": "5-repository microservices eCommerce architecture (Users, Products, Orders, Gateway, Infrastructure) with polyglot persistence, Ocelot Gateway, Redis cache invalidation, Polly resilience, and Kubernetes deployment.",
+      "fullDescription": "Enterprise 5-repository microservices architecture organized under the 'ym-harsha-ecommerce-microservices' organization. Features polyglot persistence (PostgreSQL + raw Dapper for Users, MySQL for Products Minimal API, MongoDB for Orders orchestration hub), Ocelot API Gateway, RabbitMQ event-driven Redis cache invalidation, Polly resilience policies (Retry, Circuit Breaker, Timeout, Bulkhead), and automated GitHub Actions CI/CD to a self-hosted Kubernetes cluster.",
       "image": "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=1200&q=80",
-      "tags": ["Kubernetes", "Ocelot", "RabbitMQ", "Redis", "GitHub Actions", "Polly", "xUnit"],
+      "tags": ["Kubernetes", "Ocelot", "RabbitMQ", "Redis", "Polly", "GitHub Actions", "Dapper", "MongoDB", "Docker"],
       "demoUrl": "https://drive.google.com/file/d/1VVxsmjJU57NlZn8QpqDcRlLGiE5nztiJ/view?usp=drive_link",
       "githubUrl": "https://github.com/ym-harsha-ecommerce-microservices",
       "featured": true,
-      "metric": "5 Repos & K8s Deployed",
+      "metric": "5 Repos & Kubernetes Deployed",
       "keyFeatures": [
-        "5 separate repositories (Users API, Products API, Orders API, Gateway, Infrastructure)",
-        "Ocelot API Gateway with JWT claims delegation",
-        "RabbitMQ event-driven Redis cache invalidation",
-        "Automated deployment to Kubernetes (Minikube / AKS) via GitHub Actions"
+        "5 dedicated repositories: Users API, Products API, Orders API, Gateway, and Infrastructure",
+        "Ocelot API Gateway with rate limiting and response caching",
+        "RabbitMQ background worker event-driven Redis cache invalidation",
+        "Automated deployment to Kubernetes (Minikube / AKS) via GitHub Actions CI/CD"
       ]
     },
     {
       "id": "clean-architecture-template",
       "title": "Clean Architecture Web API & Azure Services",
-      "tagline": "Production-ready ASP.NET Core 8 Web API boilerplate with Azure cloud integration.",
-      "category": "Clean Architecture",
-      "description": "Scalable enterprise Web API implementing Clean Architecture, CQRS, MediatR, FluentValidation, JWT authentication, and Azure cloud services integration.",
-      "fullDescription": "A robust, production-tested boilerplate designed to accelerate enterprise backend development. Follows strict Clean Architecture layer separation, CQRS with MediatR, FluentValidation pipeline behaviors, structured logging with Serilog, and seamless Azure Cloud services integration.",
+      "tagline": "8-layer Clean Architecture sample focused on MediatR, Commands, and Handlers.",
+      "category": "Clean Architecture & APIs",
+      "description": ".NET Clean Architecture template implementing an 8-layer separation of concerns with thin API controllers, MediatR Commands/Handlers, EF Core, FluentValidation, and Azure cloud integration.",
+      "fullDescription": "A production-tested Clean Architecture boilerplate designed to standardize enterprise backend development. Follows strict layer separation (Domain, Application, Infrastructure, Persistence, API), CQRS pattern with MediatR request and notification handlers, pipeline behaviors for FluentValidation, structured logging with Serilog, and seamless Azure Services integration.",
       "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
-      "tags": ["ASP.NET Core 8", "Clean Architecture", "Azure Services", "CQRS", "JWT", "Swagger"],
+      "tags": ["ASP.NET Core", "Clean Architecture", "CQRS", "MediatR", "FluentValidation", "Serilog", "Azure"],
       "demoUrl": "https://drive.google.com/file/d/11CF_e1657bjhhq0HsWZyEIH0lMH6ANH2/view",
       "githubUrl": "https://github.com/ym-udemy-dotnet-path/clean-architecture-template",
       "featured": true,
-      "metric": "Clean Architecture Template",
+      "metric": "8-Layer Architecture",
       "keyFeatures": [
-        "Strict Domain, Application, Infrastructure, and API layer separation",
-        "CQRS pattern with MediatR request and notification handlers",
-        "Comprehensive Swagger/OpenAPI documentation with JWT bearer support",
+        "Strict Domain, Application, Infrastructure, Persistence, and API layer boundaries",
+        "CQRS pattern using MediatR request handlers and validation pipelines",
+        "Comprehensive Swagger/OpenAPI documentation with JWT bearer token support",
         "Azure Services integration and cloud deployment readiness"
+      ]
+    },
+    {
+      "id": "restaurants-api",
+      "title": "Restaurants Enterprise API (Azure Cloud Ready)",
+      "tagline": "CQRS with MediatR, resource-based authorization, Serilog, and Azure integrations.",
+      "category": "Clean Architecture & APIs",
+      "description": "Restaurants API built with Clean Architecture, CQRS (MediatR), EF Core, AutoMapper, FluentValidation, pagination/sorting/filtering, resource-based authorization, Serilog, and Azure integrations.",
+      "fullDescription": "Engineered with Clean Architecture and CQRS (MediatR). Implements advanced pagination, multi-field dynamic sorting, and filtering. Features fine-grained resource-based authorization using custom ASP.NET Core requirements and handlers. Integrated with Serilog (Console, File, and Azure Application Insights) and Azure-ready infrastructure (App Service, Azure SQL, Blob Storage).",
+      "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["ASP.NET Core", "Clean Architecture", "CQRS", "MediatR", "Resource Authorization", "Serilog", "Azure SQL"],
+      "demoUrl": "https://github.com/ym-udemy-dotnet-path/restaurants-api",
+      "githubUrl": "https://github.com/ym-udemy-dotnet-path/restaurants-api",
+      "featured": false,
+      "metric": "Azure Ready & Resource Auth",
+      "keyFeatures": [
+        "Resource-based authorization with custom claims and operational requirements",
+        "Advanced dynamic filtering, sorting, and pagination pipeline",
+        "Application Insights and Serilog structured telemetry logging",
+        "Azure SQL Database and Azure Blob Storage integrations"
       ]
     },
     {
       "id": "hr-leave-management-api",
       "title": "HR Leave Management Enterprise API",
-      "tagline": "Role-based HR leave management system with automated approvals and unit testing.",
-      "category": "Enterprise APIs",
-      "description": "Complete enterprise HR API featuring role-based authorization, leave allocation workflows, email notification triggers, and comprehensive unit tests with xUnit and Moq.",
-      "fullDescription": "Enterprise human resources platform automating employee leave allocations and approvals. Built using ASP.NET Core and Clean Architecture with comprehensive unit test coverage utilizing xUnit, Moq, AutoFixture, and FluentAssertions to ensure zero-regression releases.",
+      "tagline": "Role-based HR leave management with automated approvals and full xUnit/Moq test suite.",
+      "category": "Clean Architecture & APIs",
+      "description": "Clean Architecture HR Leave Management API built with ASP.NET Core, CQRS (MediatR), SOLID principles, JWT authentication, role-based authorization, unit testing (xUnit/Moq), and Azure deployment.",
+      "fullDescription": "Enterprise human resources platform automating employee leave allocations and approvals. Built using ASP.NET Core and Clean Architecture with comprehensive unit test coverage utilizing xUnit, Moq, AutoFixture, and FluentAssertions to ensure zero-regression releases. Includes JWT token authentication, role-based permissions, and Azure deployment with Application Insights monitoring.",
       "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
-      "tags": ["ASP.NET Core", "Clean Architecture", "xUnit", "Moq", "EF Core", "JWT"],
+      "tags": ["ASP.NET Core", "Clean Architecture", "CQRS", "xUnit", "Moq", "AutoFixture", "FluentAssertions", "JWT"],
       "demoUrl": "https://github.com/ym-udemy-dotnet-path/hr-leave-management-api",
       "githubUrl": "https://github.com/ym-udemy-dotnet-path/hr-leave-management-api",
       "featured": false,
-      "metric": "Comprehensive Unit Tests",
+      "metric": "100% Regression-Free Unit Tests",
       "keyFeatures": [
         "Role-based authorization for Employees and HR Managers",
         "Automated leave request review and approval workflows",
-        "Comprehensive unit tests using xUnit, Moq, and FluentAssertions",
+        "Comprehensive unit tests using xUnit, Moq, AutoFixture, and FluentAssertions",
         "Transactional email alerts for leave status updates"
       ]
     },
     {
       "id": "ecommerce-api-onion",
-      "title": "eCommerce API (Onion Architecture & Stripe)",
-      "tagline": "RESTful API with Repository Pattern, Unit of Work, Redis cache, and Stripe payments.",
-      "category": "Enterprise APIs",
-      "description": "Robust eCommerce backend built with Onion Architecture, Generic Repository pattern, Unit of Work, Redis distributed caching, and Stripe payment gateway.",
-      "fullDescription": "Built during the Route Academy Diploma, this high-performance eCommerce API leverages Onion Architecture to isolate core business rules from external dependencies. Features include Redis caching for catalog queries, Stripe checkout integration, specification pattern querying, and JWT authentication.",
+      "title": "Route E-Commerce API (7-Layer Onion Architecture)",
+      "tagline": "Route Diploma capstone with dual Identity contexts, Redis caching, and Stripe payments.",
+      "category": "Clean Architecture & APIs",
+      "description": "Route E-Commerce API built with .NET 8 using Onion Architecture (7 layers), EF Core with two Identity contexts, JWT authentication, Redis caching for basket, Stripe payments, and Repository/Unit of Work patterns.",
+      "fullDescription": "Built during the Route Academy Diploma, this high-performance eCommerce API leverages Onion Architecture (7 layers) to isolate core business rules from external dependencies. Features include two separate Identity contexts, Redis distributed caching for shopping cart management, Stripe checkout integration, Generic Repository, Unit of Work, Specification, and Result patterns. Fully tested with an Angular client.",
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-      "tags": ["ASP.NET Core", "Onion Architecture", "Redis", "Stripe API", "SQL Server"],
+      "tags": [".NET 8", "Onion Architecture", "Redis", "Stripe API", "SQL Server", "Unit of Work", "Specification Pattern"],
       "demoUrl": "https://github.com/ym-route-backend-diploma/ecommerce-api-onion",
       "githubUrl": "https://github.com/ym-route-backend-diploma/ecommerce-api-onion",
-      "featured": false,
-      "metric": "Stripe & Redis Integrated",
+      "featured": true,
+      "metric": "7-Layer Onion & Redis",
       "keyFeatures": [
         "Generic Repository and Unit of Work patterns for clean data access",
-        "Redis in-memory caching to boost product catalog performance",
+        "Redis in-memory caching to boost product catalog and basket performance",
         "Stripe payment gateway integration with webhook listeners",
         "Specification pattern for dynamic filtering, sorting, and pagination"
+      ]
+    },
+    {
+      "id": "depi-devops-workshop",
+      "title": "DEPI DevOps Infrastructure & Cloud Workshops",
+      "tagline": "Terraform (IaC), Docker, Kubernetes, Nginx Reverse Proxy & GitHub Actions CI/CD.",
+      "category": "DevOps & Cloud",
+      "description": "Comprehensive DevOps workshops developed during the Digital Egypt Pioneers Initiative (DEPI). Features Terraform automation, multi-stage Docker containerization, Kubernetes clusters, and automated CI/CD.",
+      "fullDescription": "Developed as part of the DEPI DevOps scholarship track. Includes Infrastructure as Code (IaC) with Terraform for automated resource provisioning, Linux (RHEL) system administration scripts in Bash, Nginx reverse proxy configurations with SSL termination, Docker container orchestration, Kubernetes manifests, and automated GitHub Actions CI/CD workflows.",
+      "image": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["Terraform", "HCL", "Docker", "Kubernetes", "Linux (RHEL)", "Nginx", "GitHub Actions", "Bash"],
+      "demoUrl": "https://github.com/youssef-mohammed317/depi-devops-workshop",
+      "githubUrl": "https://github.com/youssef-mohammed317/depi-devops-workshop",
+      "featured": false,
+      "metric": "IaC & CI/CD Pipelines",
+      "keyFeatures": [
+        "Terraform (HCL) automated cloud infrastructure provisioning",
+        "Multi-stage Docker builds optimizing container image sizes",
+        "Kubernetes deployment manifests with health probes and resource limits",
+        "Automated build, test, and deployment workflows with GitHub Actions"
+      ]
+    },
+    {
+      "id": "data-structures-implementations",
+      "title": "From-Scratch Data Structures & Algorithms in C++",
+      "tagline": "Comprehensive C++ implementations organized into dedicated topic branches.",
+      "category": "Algorithms & DSA",
+      "description": "From-scratch C++ implementation of Data Structures & Algorithms. Code is organized into dedicated branches per topic, featuring custom graph libraries, precise linear structures, and advanced algorithm strategies.",
+      "fullDescription": "A deep-dive, from-scratch algorithmic repository engineered in modern C++. Highly structured into dedicated Git branches for each topic: custom Graph libraries (BFS, DFS, Dijkstra, Bellman-Ford, Prim/Kruskal), dynamic Trees (BST, AVL, Segment Trees), Hash Tables with collision resolution, and advanced algorithmic paradigms including Dynamic Programming, Greedy, and Backtracking.",
+      "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["C++", "Data Structures", "Algorithms", "Graphs", "Dynamic Programming", "Trees", "Problem Solving"],
+      "demoUrl": "https://drive.google.com/file/d/1oif6RxMT86kCuHrOJ6OO_EiBUf545KgG/view?usp=drive_link",
+      "githubUrl": "https://github.com/youssef-mohammed317/data-structures-implementations",
+      "featured": false,
+      "metric": "Dedicated Topic Branches",
+      "keyFeatures": [
+        "From-scratch implementations of Graphs, Trees, Heaps, and Hash Tables",
+        "Dynamic Programming, Divide and Conquer, Greedy, and Backtracking algorithms",
+        "Git topic-branch workflow isolating algorithmic modules",
+        "Rigorous time and space complexity optimizations"
+      ]
+    },
+    {
+      "id": "harsha-aspnetcore-assignments",
+      "title": "Stocks Trading Platform & ASP.NET Core 10 Capstone",
+      "tagline": "Complete financial trading platform with live stocks, banking, and xUnit testing.",
+      "category": "Clean Architecture & APIs",
+      "description": "Comprehensive implementation of every section in the ASP.NET Core 10 Masterclass. Features real evolving apps (Weather, Bank, e-Commerce, and a full Stocks Trading Platform) using EF Core, xUnit/Moq, and Clean Architecture.",
+      "fullDescription": "Hands-on implementation of the full ASP.NET Core 10 curriculum. Centers on a comprehensive Stocks Trading Platform featuring live price simulation, order execution, banking transactions, and customer portfolio management. Adheres strictly to Clean Architecture principles, EF Core database mappings, robust xUnit/Moq unit tests, and Serilog logging.",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["ASP.NET Core 10", "Stocks Trading", "xUnit", "Moq", "EF Core", "Clean Architecture", "Serilog"],
+      "demoUrl": "https://drive.google.com/file/d/1w7kqYdkPweA9NomnInLiwOeb6sWYEXXQ/view?usp=drive_link",
+      "githubUrl": "https://github.com/ym-udemy-dotnet-path/harsha-aspnetcore-assignments",
+      "featured": false,
+      "metric": "Stocks Platform Capstone",
+      "keyFeatures": [
+        "Live financial stocks order placement and portfolio balance updates",
+        "Comprehensive unit testing suite with xUnit, Moq, and FluentAssertions",
+        "Full Clean Architecture structure with loose coupling and dependency injection",
+        "Serilog structured logging tracking financial transactions"
+      ]
+    },
+    {
+      "id": "bulky-book-mvc",
+      "title": "Bulky Book E-Commerce (Layered MVC & Stripe)",
+      "tagline": "Layered ASP.NET Core MVC with Razor Views, Identity, Stripe, Areas, and Upsert pattern.",
+      "category": "Clean Architecture & APIs",
+      "description": "ASP.NET Core MVC (Razor Views) project built using a layered architecture. Implements real-world features like Identity, Stripe payments, Areas, Upsert pattern, DataTables, and SweetAlert.",
+      "fullDescription": "A production-grade ASP.NET Core MVC web application utilizing a clean multi-project layered architecture. Features customer and admin Areas, ASP.NET Core Identity authentication and role-based authorization, integrated Stripe payment processing, Upsert pattern, and rich UI interactivity with DataTables, Toastr, SweetAlert, and TinyMCE.",
+      "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["ASP.NET Core MVC", "Razor Views", "Stripe", "Identity", "DataTables", "SQL Server"],
+      "demoUrl": "https://github.com/ym-udemy-dotnet-path/bulky-book-mvc",
+      "githubUrl": "https://github.com/ym-udemy-dotnet-path/bulky-book-mvc",
+      "featured": false,
+      "metric": "Layered MVC & Stripe",
+      "keyFeatures": [
+        "Role-based Areas separating Customer, Admin, and Company portals",
+        "Stripe payment gateway integration with order fulfillment workflows",
+        "Generic Upsert data access patterns reducing boilerplate code",
+        "Interactive UI components including DataTables and SweetAlert"
+      ]
+    },
+    {
+      "id": "problem-solving-codewars",
+      "title": "Algorithmic Problem Solving (250+ CodeWars Katas)",
+      "tagline": "250+ solved Katas in C# covering data structures, mathematics, and logic.",
+      "category": "Algorithms & DSA",
+      "description": "Collection of 250+ algorithmic problem-solving Katas solved on CodeWars in C#. Demonstrates consistent daily dedication to code performance, edge case handling, and algorithm design.",
+      "fullDescription": "Showcases over 250 solved katas on CodeWars (7-8 kyu) written in C#. Problems cover bitwise manipulation, array permutations, string parsing, sorting algorithms, mathematical number theory, and performance optimization techniques.",
+      "image": "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["C#", "CodeWars", "Algorithms", "Problem Solving", "Optimization"],
+      "demoUrl": "https://www.codewars.com/users/youssef-mohammed317",
+      "githubUrl": "https://github.com/youssef-mohammed317/problem-solving",
+      "featured": false,
+      "metric": "250+ Katas Solved",
+      "keyFeatures": [
+        "250+ algorithmic katas solved with clean, idiomatic C#",
+        "Optimized time and space complexity solutions",
+        "Comprehensive edge case handling and unit verification",
+        "Consistent problem-solving track record on CodeWars"
       ]
     }
   ],

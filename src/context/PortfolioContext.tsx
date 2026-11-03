@@ -20,39 +20,22 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
   const [data, setData] = useState<PortfolioData>(typedDefaultData);
   const [isModified, setIsModified] = useState(false);
 
-  // Load draft edits if stored
+  // Clean up any legacy template draft stored in browser
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem("portfolio-custom-data");
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        setData(parsed);
-        setIsModified(true);
-      }
-    } catch {
-      // fallback to default
-    }
-  }, []);
-
-  const updateData = (updater: (prev: PortfolioData) => PortfolioData) => {
-    setData((prev) => {
-      const updated = updater(prev);
-      try {
-        localStorage.setItem("portfolio-custom-data", JSON.stringify(updated));
-      } catch {
-        // ignore
-      }
-      setIsModified(true);
-      return updated;
-    });
-  };
-
-  const resetData = () => {
     try {
       localStorage.removeItem("portfolio-custom-data");
     } catch {
       // ignore
     }
+    setData(typedDefaultData);
+  }, []);
+
+  const updateData = (updater: (prev: PortfolioData) => PortfolioData) => {
+    setData((prev) => updater(prev));
+    setIsModified(true);
+  };
+
+  const resetData = () => {
     setData(typedDefaultData);
     setIsModified(false);
   };
